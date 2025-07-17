@@ -1,12 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:habit_tracker/features/habit/domain/entities/habit_entity.dart';
-import 'package:habit_tracker/features/habit/domain/usecases/add_habit_use_case.dart';
-import 'package:habit_tracker/features/habit/domain/usecases/complete_habit_use_case.dart';
-import 'package:habit_tracker/features/habit/domain/usecases/delete_habit_use_case.dart';
-import 'package:habit_tracker/features/habit/domain/usecases/get_all_habits_use_case.dart';
-import 'package:habit_tracker/features/habit/domain/usecases/get_habit_by_id_use_case.dart';
-import 'package:habit_tracker/features/habit/domain/usecases/update_habit_use_case.dart';
+import 'package:habit_tracker/features/habit/domain/usecases/add_habit_usecase.dart';
+import 'package:habit_tracker/features/habit/domain/usecases/complete_habit_usecase.dart';
+import 'package:habit_tracker/features/habit/domain/usecases/delete_habit_usecase.dart';
+import 'package:habit_tracker/features/habit/domain/usecases/get_all_habits_usecase.dart';
+import 'package:habit_tracker/features/habit/domain/usecases/get_habit_by_id_usecase.dart';
+import 'package:habit_tracker/features/habit/domain/usecases/update_habit_usecase.dart';
 import 'package:injectable/injectable.dart';
 
 part 'habit_bloc.freezed.dart';

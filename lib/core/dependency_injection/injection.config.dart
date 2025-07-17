@@ -23,17 +23,19 @@ import 'package:habit_tracker/features/habit/data/repositories/habit_repository_
     as _i856;
 import 'package:habit_tracker/features/habit/domain/repositories/habit_repository.dart'
     as _i446;
-import 'package:habit_tracker/features/habit/domain/usecases/add_habit_use_case.dart'
+import 'package:habit_tracker/features/habit/domain/usecases/add_habit_usecase.dart'
     as _i790;
-import 'package:habit_tracker/features/habit/domain/usecases/complete_habit_use_case.dart'
+import 'package:habit_tracker/features/habit/domain/usecases/complete_habit_usecase.dart'
     as _i199;
-import 'package:habit_tracker/features/habit/domain/usecases/delete_habit_use_case.dart'
+import 'package:habit_tracker/features/habit/domain/usecases/delete_habit_usecase.dart'
     as _i1011;
-import 'package:habit_tracker/features/habit/domain/usecases/get_all_habits_use_case.dart'
+import 'package:habit_tracker/features/habit/domain/usecases/get_all_habits_usecase.dart'
     as _i681;
-import 'package:habit_tracker/features/habit/domain/usecases/get_habit_by_id_use_case.dart'
+import 'package:habit_tracker/features/habit/domain/usecases/get_habit_by_id_usecase.dart'
     as _i515;
-import 'package:habit_tracker/features/habit/domain/usecases/update_habit_use_case.dart'
+import 'package:habit_tracker/features/habit/domain/usecases/get_habit_stats_usecase.dart'
+    as _i168;
+import 'package:habit_tracker/features/habit/domain/usecases/update_habit_usecase.dart'
     as _i89;
 import 'package:habit_tracker/features/habit/presentation/controller/habit_bloc.dart'
     as _i232;
@@ -70,6 +72,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i856.HabitRepositoryImpl(gh<_i880.HabitLocalDataSource>()));
     gh.lazySingleton<_i199.CompleteHabitUseCase>(
         () => _i199.CompleteHabitUseCase(gh<_i446.HabitRepository>()));
+    gh.lazySingleton<_i168.GetHabitStatsUseCase>(
+        () => _i168.GetHabitStatsUseCase(gh<_i446.HabitRepository>()));
     gh.lazySingleton<_i681.GetAllHabitsUseCase>(
         () => _i681.GetAllHabitsUseCase(gh<_i446.HabitRepository>()));
     gh.lazySingleton<_i515.GetHabitByIdUseCase>(
