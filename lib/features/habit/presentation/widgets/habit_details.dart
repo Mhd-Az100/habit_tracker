@@ -79,7 +79,10 @@ class HabitDetailSheet extends StatelessWidget {
                       Navigator.of(context).pop();
                       customShowBottomSheet(
                         context,
-                        AddHabitSheet(habitToEdit: habit),
+                        BlocProvider.value(
+                          value: context.read<HabitBloc>(),
+                          child: AddHabitSheet(habitToEdit: habit),
+                        ),
                       );
                     },
                     icon: const Icon(Icons.edit),

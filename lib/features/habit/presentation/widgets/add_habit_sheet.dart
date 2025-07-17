@@ -11,9 +11,9 @@ import 'package:habit_tracker/features/habit/presentation/widgets/everxday_field
 import 'package:uuid/uuid.dart';
 
 class AddHabitSheet extends StatefulWidget {
-  final HabitEntity? habitToEdit; // <--- NEW: Optional habit to edit
+  final HabitEntity? habitToEdit;
 
-  const AddHabitSheet({super.key, this.habitToEdit}); // <--- NEW: Constructor
+  const AddHabitSheet({super.key, this.habitToEdit});
 
   @override
   State<AddHabitSheet> createState() => _AddHabitSheetState();
@@ -26,20 +26,18 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
   final _everyXDaysController = TextEditingController();
 
   RecurrenceType _selectedRepetition = RecurrenceType.daily;
-  List<int> _selectedDaysOfWeek = []; // Use List<int> as your entity expects
+  List<int> _selectedDaysOfWeek = [];
 
   @override
   void initState() {
     super.initState();
-    // Initialize form fields if editing an existing habit
     if (widget.habitToEdit != null) {
       _nameController.text = widget.habitToEdit!.name;
       _descriptionController.text = widget.habitToEdit!.description ?? '';
       _selectedRepetition = widget.habitToEdit!.recurrenceType;
-      _selectedDaysOfWeek = List.from(widget.habitToEdit!.daysOfWeek ?? []); // Ensure mutable copy
+      _selectedDaysOfWeek = List.from(widget.habitToEdit!.daysOfWeek ?? []);
       _everyXDaysController.text = (widget.habitToEdit!.everyXDays ?? 1).toString();
     } else {
-      // For new habit, set default for EveryXDays
       _everyXDaysController.text = '1';
     }
   }
@@ -60,9 +58,9 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
         if (everyXDaysValue <= 0) everyXDaysValue = 1;
       }
 
-      final String habitId = widget.habitToEdit?.id ?? const Uuid().v4(); // Use existing ID or new
-      final DateTime createdAt = widget.habitToEdit?.createdAt ?? DateTime.now(); // Preserve creation date on edit
-      final List<String> completionDates = List.from(widget.habitToEdit?.completionDates ?? []); // Preserve completion dates on edit
+      final String habitId = widget.habitToEdit?.id ?? const Uuid().v4();
+      final DateTime createdAt = widget.habitToEdit?.createdAt ?? DateTime.now();
+      final List<String> completionDates = List.from(widget.habitToEdit?.completionDates ?? []);
 
       final habit = HabitEntity(
         id: habitId,
@@ -74,22 +72,22 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
             : null,
         everyXDays: everyXDaysValue,
         createdAt: createdAt,
-        completionDates: completionDates, // Pass existing completions
+        completionDates: completionDates,
       );
 
       if (widget.habitToEdit == null) {
         context.read<HabitBloc>().add(HabitEvent.addHabit(habit));
       } else {
-        context.read<HabitBloc>().add(HabitEvent.updateHabit(habit)); // <--- NEW: Update event
+        context.read<HabitBloc>().add(HabitEvent.updateHabit(habit));
       }
-      Navigator.of(context).pop(); // Close the sheet
+      Navigator.of(context).pop();
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return FullPageBottomSheet(
-      title: widget.habitToEdit == null ? 'Add New Habit' : 'Edit Habit', // <--- Dynamic title
+      title: widget.habitToEdit == null ? 'Add New Habit' : 'Edit Habit',
       child: Form(
         key: _formKey,
         child: ListView(
@@ -116,7 +114,7 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
               children: RecurrenceType.values.map((type) {
                 return ChoiceChip(
                   onSelected: (val) => setState(() => _selectedRepetition = type),
-                  label: Text(type.translate()), // Ensure translate() is defined
+                  label: Text(type.translate()),
                   selected: _selectedRepetition == type,
                 );
               }).toList(),
@@ -160,7 +158,7 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: _submit,
-                child: Text(widget.habitToEdit == null ? 'Save Habit' : 'Update Habit'), // <--- Dynamic button text
+                child: Text(widget.habitToEdit == null ? 'Save Habit' : 'Update Habit'),
               ),
             ),
           ],
@@ -169,3 +167,4 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
     );
   }
 }
+
