@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/core/dependency_injection/injection.dart';
 import 'package:habit_tracker/core/hive/hive_config.dart';
+import 'package:habit_tracker/core/theme/theme.dart';
+import 'package:habit_tracker/core/theme/theme_cubit.dart';
+import 'package:habit_tracker/core/theme/util.dart';
+import 'package:habit_tracker/home.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await HiveConfig.init();         // 1. Init Hive & register adapters
+  await HiveConfig.init();
   await configureDependencies();  
-  runApp(MainApp());
+  final themeCubit = getIt<ThemeCubit>();
+
+  runApp(BlocProvider.value(
+      value: themeCubit,
+      child: MainApp(),
+    ),
+);
 }
 
 
@@ -16,12 +27,25 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    final baseTextTheme = createTextTheme(
+      context,
+      bodyFontFamily: "Lato",
+      displayFontFamily: "Lato",
+    );
+    final appTheme = MaterialTheme(baseTextTheme);
+
+    return BlocBuilder<ThemeCubit, ThemeMode>(
+      builder: (context, themeMode) {
+
+        final ThemeData currentThemeData = themeMode == ThemeMode.dark ? appTheme.dark() : appTheme.light();
+
+        return  MaterialApp(
+          debugShowCheckedModeBanner: false,
+          themeMode: themeMode,
+          theme: currentThemeData,
+          home: HomeScaffold(),
+        );
+      }
     );
   }
 }
