@@ -1,8 +1,5 @@
-import 'package:habit_tracker/core/enums/day_of_week.dart';
-import 'package:habit_tracker/core/enums/recurrence_type.dart';
 import 'package:habit_tracker/features/habit/data/models/habit_model.dart';
 import 'package:habit_tracker/features/habit/domain/entities/habit_entity.dart';
-import 'package:habit_tracker/features/habit/domain/entities/recurrence_details_entity.dart';
 
 extension HabitModelMapper on HabitModel {
   HabitEntity toEntity() {
@@ -11,23 +8,11 @@ extension HabitModelMapper on HabitModel {
       name: name,
       description: description,
       createdAt: createdAt,
-      recurrenceDetails: _mapRecurrence(), completedDate: completedDate,
+      // Correctly map recurrence properties to the RecurrenceDetailsEntity
+      recurrenceType: recurrenceType, // Direct map to the entity's type
+      daysOfWeek: daysOfWeek, // Direct map
+      everyXDays: everyXDays, // Direct map
+      completionDates: completionDates, // Correctly map the list of completion dates
     );
   }
-
-  RecurrenceDetailsEntity _mapRecurrence() {
-    switch (recurrenceType) {
-      case RecurrenceType.daily:
-        return const RecurrenceDetailsEntity.daily();
-      case RecurrenceType.weekly:
-        return RecurrenceDetailsEntity.weekly(
-          days: List<DayOfWeek>.from(recurrenceValue as List),
-        );
-      case RecurrenceType.everyXDays:
-        return RecurrenceDetailsEntity.everyXDays(
-          daysInterval: recurrenceValue as int,
-        );
-    }
-  }
 }
-
