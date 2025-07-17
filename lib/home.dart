@@ -33,10 +33,17 @@ class _HomeScaffoldState extends State<HomeScaffold> {
         title: Text(_pageTitles[_currentIndex]),
         actions: [
           IconButton(
-            icon: Icon(
-              context.watch<ThemeCubit>().state == ThemeMode.dark
-                  ? Icons.light_mode
-                  : Icons.dark_mode,
+            icon: AnimatedSwitcher(
+              duration: Durations.long1,
+              transitionBuilder: (child, animation) {
+                return ScaleTransition(
+                  scale: animation,
+                  child: child,
+                );
+              },
+              child: context.watch<ThemeCubit>().state == ThemeMode.dark
+                  ? const Icon(Icons.light_mode, key: ValueKey('light_mode_icon'))
+                  : const Icon(Icons.dark_mode, key: ValueKey('dark_mode_icon')),
             ),
             onPressed: () => context.read<ThemeCubit>().toggleTheme(),
           ),

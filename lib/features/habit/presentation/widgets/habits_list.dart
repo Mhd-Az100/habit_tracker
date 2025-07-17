@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/core/extensions/date_time_extension.dart';
@@ -85,7 +83,6 @@ class _HabitListViewState extends State<HabitListView> {
             ).showSnackBar(SnackBar(content: Text('Error: $message')));
           },
           loaded: (habits) {
-            log("habits List : $habits");
             final currentHabitIds = habits.map((h) => h.id).toSet();
             _selectedHabitIds.retainWhere((id) => currentHabitIds.contains(id));
             if (_selectedHabitIds.isEmpty) {
