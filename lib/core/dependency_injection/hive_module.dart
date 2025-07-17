@@ -14,4 +14,8 @@ abstract class HiveModule {
   @singleton
   Future<Box<HabitCompletionModel>> get habitCompletionBox async =>
       await Hive.openBox<HabitCompletionModel>('habitCompletionBox');
+
+  @preResolve
+  @singleton
+  Future<Box> get themeBox async => await Hive.openBox('theme');
 }

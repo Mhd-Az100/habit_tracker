@@ -9,10 +9,13 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i174;
+import 'package:habit_tracker/core/dependency_injection/cubit_module.dart'
+    as _i353;
 import 'package:habit_tracker/core/dependency_injection/datasource_module.dart'
     as _i3;
 import 'package:habit_tracker/core/dependency_injection/hive_module.dart'
     as _i271;
+import 'package:habit_tracker/core/theme/theme_cubit.dart' as _i258;
 import 'package:habit_tracker/features/habit/data/datasources/habit_local_datasource.dart'
     as _i880;
 import 'package:habit_tracker/features/habit/data/models/habit_completion_model.dart'
@@ -24,19 +27,19 @@ import 'package:habit_tracker/features/habit/data/repositories/habit_repository_
 import 'package:habit_tracker/features/habit/domain/repositories/habit_repository.dart'
     as _i446;
 import 'package:habit_tracker/features/habit/domain/usecases/add_habit_usecase.dart'
-    as _i790;
+    as _i1035;
 import 'package:habit_tracker/features/habit/domain/usecases/complete_habit_usecase.dart'
-    as _i199;
+    as _i941;
 import 'package:habit_tracker/features/habit/domain/usecases/delete_habit_usecase.dart'
-    as _i1011;
+    as _i292;
 import 'package:habit_tracker/features/habit/domain/usecases/get_all_habits_usecase.dart'
-    as _i681;
+    as _i142;
 import 'package:habit_tracker/features/habit/domain/usecases/get_habit_by_id_usecase.dart'
-    as _i515;
+    as _i808;
 import 'package:habit_tracker/features/habit/domain/usecases/get_habit_stats_usecase.dart'
-    as _i168;
+    as _i134;
 import 'package:habit_tracker/features/habit/domain/usecases/update_habit_usecase.dart'
-    as _i89;
+    as _i263;
 import 'package:habit_tracker/features/habit/presentation/controller/habit_bloc.dart'
     as _i232;
 import 'package:hive/hive.dart' as _i979;
@@ -54,6 +57,7 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final hiveModule = _$HiveModule();
+    final cubitModule = _$CubitModule();
     final dataSourceModule = _$DataSourceModule();
     await gh.singletonAsync<_i979.Box<_i830.HabitModel>>(
       () => hiveModule.habitBox,
@@ -63,6 +67,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => hiveModule.habitCompletionBox,
       preResolve: true,
     );
+    await gh.singletonAsync<_i979.Box<dynamic>>(
+      () => hiveModule.themeBox,
+      preResolve: true,
+    );
+    gh.lazySingleton<_i258.ThemeCubit>(
+        () => cubitModule.themeCubit(gh<_i979.Box<dynamic>>()));
     gh.lazySingleton<_i880.HabitLocalDataSource>(
         () => dataSourceModule.habitLocalDataSource(
               gh<_i979.Box<_i830.HabitModel>>(),
@@ -70,32 +80,35 @@ extension GetItInjectableX on _i174.GetIt {
             ));
     gh.lazySingleton<_i446.HabitRepository>(
         () => _i856.HabitRepositoryImpl(gh<_i880.HabitLocalDataSource>()));
-    gh.lazySingleton<_i199.CompleteHabitUseCase>(
-        () => _i199.CompleteHabitUseCase(gh<_i446.HabitRepository>()));
-    gh.lazySingleton<_i168.GetHabitStatsUseCase>(
-        () => _i168.GetHabitStatsUseCase(gh<_i446.HabitRepository>()));
-    gh.lazySingleton<_i681.GetAllHabitsUseCase>(
-        () => _i681.GetAllHabitsUseCase(gh<_i446.HabitRepository>()));
-    gh.lazySingleton<_i515.GetHabitByIdUseCase>(
-        () => _i515.GetHabitByIdUseCase(gh<_i446.HabitRepository>()));
-    gh.lazySingleton<_i1011.DeleteHabitUseCase>(
-        () => _i1011.DeleteHabitUseCase(gh<_i446.HabitRepository>()));
-    gh.lazySingleton<_i89.UpdateHabitUseCase>(
-        () => _i89.UpdateHabitUseCase(gh<_i446.HabitRepository>()));
-    gh.lazySingleton<_i790.AddHabitUseCase>(
-        () => _i790.AddHabitUseCase(gh<_i446.HabitRepository>()));
+    gh.lazySingleton<_i941.CompleteHabitUseCase>(
+        () => _i941.CompleteHabitUseCase(gh<_i446.HabitRepository>()));
+    gh.lazySingleton<_i134.GetHabitStatsUseCase>(
+        () => _i134.GetHabitStatsUseCase(gh<_i446.HabitRepository>()));
+    gh.lazySingleton<_i263.UpdateHabitUseCase>(
+        () => _i263.UpdateHabitUseCase(gh<_i446.HabitRepository>()));
+    gh.lazySingleton<_i1035.AddHabitUseCase>(
+        () => _i1035.AddHabitUseCase(gh<_i446.HabitRepository>()));
+    gh.lazySingleton<_i808.GetHabitByIdUseCase>(
+        () => _i808.GetHabitByIdUseCase(gh<_i446.HabitRepository>()));
+    gh.lazySingleton<_i292.DeleteHabitUseCase>(
+        () => _i292.DeleteHabitUseCase(gh<_i446.HabitRepository>()));
+    gh.lazySingleton<_i142.GetAllHabitsUseCase>(
+        () => _i142.GetAllHabitsUseCase(gh<_i446.HabitRepository>()));
     gh.factory<_i232.HabitBloc>(() => _i232.HabitBloc(
-          getAllHabits: gh<_i681.GetAllHabitsUseCase>(),
-          addHabit: gh<_i790.AddHabitUseCase>(),
-          updateHabit: gh<_i89.UpdateHabitUseCase>(),
-          deleteHabit: gh<_i1011.DeleteHabitUseCase>(),
-          getHabitById: gh<_i515.GetHabitByIdUseCase>(),
-          completeHabit: gh<_i199.CompleteHabitUseCase>(),
+          getAllHabits: gh<_i142.GetAllHabitsUseCase>(),
+          addHabit: gh<_i1035.AddHabitUseCase>(),
+          updateHabit: gh<_i263.UpdateHabitUseCase>(),
+          deleteHabit: gh<_i292.DeleteHabitUseCase>(),
+          getHabitById: gh<_i808.GetHabitByIdUseCase>(),
+          completeHabit: gh<_i941.CompleteHabitUseCase>(),
+          getHabitStats: gh<_i134.GetHabitStatsUseCase>(),
         ));
     return this;
   }
 }
 
 class _$HiveModule extends _i271.HiveModule {}
+
+class _$CubitModule extends _i353.CubitModule {}
 
 class _$DataSourceModule extends _i3.DataSourceModule {}
