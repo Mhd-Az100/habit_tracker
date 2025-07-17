@@ -24,7 +24,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
             maxDate: DateTime.now().add(const Duration(days: 365)),
             initialDate: DateTime.now(),
             selectedDate: _selectedDate,
-            
+            selectedCellDecoration: BoxDecoration(
+              color: Colors.amber,
+              shape: BoxShape.circle,
+            ),
             onDateSelected: (value) {
               setState(() {
                 _selectedDate = value;

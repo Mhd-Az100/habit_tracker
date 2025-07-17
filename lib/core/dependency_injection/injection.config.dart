@@ -40,10 +40,12 @@ import 'package:habit_tracker/features/habit/domain/usecases/get_habit_stats_use
     as _i134;
 import 'package:habit_tracker/features/habit/domain/usecases/update_habit_usecase.dart'
     as _i263;
+import 'package:habit_tracker/features/habit/presentation/controller/add_cubit/add_habit_cubit.dart'
+    as _i632;
 import 'package:habit_tracker/features/habit/presentation/controller/bloc/habit_bloc.dart'
     as _i127;
-import 'package:habit_tracker/features/habit/presentation/controller/cubit/add_habit_cubit.dart'
-    as _i940;
+import 'package:habit_tracker/features/habit/presentation/controller/delete_cubit/delete_habit_cubit.dart'
+    as _i1056;
 import 'package:hive/hive.dart' as _i979;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:uuid/uuid.dart' as _i706;
@@ -62,6 +64,7 @@ extension GetItInjectableX on _i174.GetIt {
     final hiveModule = _$HiveModule();
     final dataSourceModule = _$DataSourceModule();
     final cubitModule = _$CubitModule();
+    gh.factory<_i1056.HabitDeleteCubit>(() => _i1056.HabitDeleteCubit());
     await gh.singletonAsync<_i979.Box<_i830.HabitModel>>(
       () => hiveModule.habitBox,
       preResolve: true,
@@ -75,8 +78,8 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.lazySingleton<_i706.Uuid>(() => dataSourceModule.uuid);
-    gh.factory<_i940.AddHabitCubit>(
-        () => _i940.AddHabitCubit(gh<_i706.Uuid>()));
+    gh.factory<_i632.AddHabitCubit>(
+        () => _i632.AddHabitCubit(gh<_i706.Uuid>()));
     gh.lazySingleton<_i258.ThemeCubit>(
         () => cubitModule.themeCubit(gh<_i979.Box<dynamic>>()));
     gh.lazySingleton<_i880.HabitLocalDataSource>(

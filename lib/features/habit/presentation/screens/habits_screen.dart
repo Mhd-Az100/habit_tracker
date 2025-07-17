@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/core/helpers/custom_show_bottom_sheet.dart';
-import 'package:habit_tracker/features/habit/presentation/controller/habit_bloc.dart';
+import 'package:habit_tracker/features/habit/presentation/controller/bloc/habit_bloc.dart';
 import 'package:habit_tracker/features/habit/presentation/widgets/add_habit_sheet.dart';
 import 'package:habit_tracker/features/habit/presentation/widgets/habits_list.dart';
 

@@ -7,7 +7,7 @@ import 'package:habit_tracker/core/extensions/string_extension.dart';
 import 'package:habit_tracker/core/helpers/custom_show_bottom_sheet.dart';
 import 'package:habit_tracker/core/widgets/full_page_bottom_sheet.dart';
 import 'package:habit_tracker/features/habit/domain/entities/habit_entity.dart';
-import 'package:habit_tracker/features/habit/presentation/controller/habit_bloc.dart';
+import 'package:habit_tracker/features/habit/presentation/controller/bloc/habit_bloc.dart';
 import 'package:habit_tracker/features/habit/presentation/widgets/add_habit_sheet.dart';
 
 class HabitDetailSheet extends StatelessWidget {
