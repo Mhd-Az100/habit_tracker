@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/core/dependency_injection/injection.dart';
+import 'package:habit_tracker/core/hive/hive_config.dart';
 
-void main() {
-  runApp(const MainApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await HiveConfig.init();         // 1. Init Hive & register adapters
+  await configureDependencies();  
+  runApp(MainApp());
 }
+
+
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
