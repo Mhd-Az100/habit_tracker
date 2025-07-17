@@ -25,7 +25,7 @@ mixin _$HabitEntity {
   List<String> get completionDates =>
       throw _privateConstructorUsedError; // Stores YYYY-MM-DD strings for completed days
   List<int>? get daysOfWeek =>
-      throw _privateConstructorUsedError; // For weekly recurrence: 1=Monday, 7=Sunday
+      throw _privateConstructorUsedError; // weekly recurrence: 1=Monday, 7=Sunday
   int? get everyXDays => throw _privateConstructorUsedError;
 
   /// Create a copy of HabitEntity
@@ -239,7 +239,7 @@ class _$HabitEntityImpl implements _HabitEntity {
     return EqualUnmodifiableListView(value);
   }
 
-// For weekly recurrence: 1=Monday, 7=Sunday
+// weekly recurrence: 1=Monday, 7=Sunday
   @override
   final int? everyXDays;
 
@@ -315,7 +315,7 @@ abstract class _HabitEntity implements HabitEntity {
   List<String>
       get completionDates; // Stores YYYY-MM-DD strings for completed days
   @override
-  List<int>? get daysOfWeek; // For weekly recurrence: 1=Monday, 7=Sunday
+  List<int>? get daysOfWeek; // weekly recurrence: 1=Monday, 7=Sunday
   @override
   int? get everyXDays;
 
