@@ -19,10 +19,14 @@ mixin _$HabitEntity {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  RecurrenceDetailsEntity get recurrenceDetails =>
-      throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
-  DateTime get completedDate => throw _privateConstructorUsedError;
+  RecurrenceType get recurrenceType =>
+      throw _privateConstructorUsedError; // Enum for Daily, Weekly, Every X Days
+  List<String> get completionDates =>
+      throw _privateConstructorUsedError; // Stores YYYY-MM-DD strings for completed days
+  List<int>? get daysOfWeek =>
+      throw _privateConstructorUsedError; // For weekly recurrence: 1=Monday, 7=Sunday
+  int? get everyXDays => throw _privateConstructorUsedError;
 
   /// Create a copy of HabitEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -41,11 +45,11 @@ abstract class $HabitEntityCopyWith<$Res> {
       {String id,
       String name,
       String? description,
-      RecurrenceDetailsEntity recurrenceDetails,
       DateTime createdAt,
-      DateTime completedDate});
-
-  $RecurrenceDetailsEntityCopyWith<$Res> get recurrenceDetails;
+      RecurrenceType recurrenceType,
+      List<String> completionDates,
+      List<int>? daysOfWeek,
+      int? everyXDays});
 }
 
 /// @nodoc
@@ -66,9 +70,11 @@ class _$HabitEntityCopyWithImpl<$Res, $Val extends HabitEntity>
     Object? id = null,
     Object? name = null,
     Object? description = freezed,
-    Object? recurrenceDetails = null,
     Object? createdAt = null,
-    Object? completedDate = null,
+    Object? recurrenceType = null,
+    Object? completionDates = null,
+    Object? daysOfWeek = freezed,
+    Object? everyXDays = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -83,30 +89,27 @@ class _$HabitEntityCopyWithImpl<$Res, $Val extends HabitEntity>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      recurrenceDetails: null == recurrenceDetails
-          ? _value.recurrenceDetails
-          : recurrenceDetails // ignore: cast_nullable_to_non_nullable
-              as RecurrenceDetailsEntity,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      completedDate: null == completedDate
-          ? _value.completedDate
-          : completedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      recurrenceType: null == recurrenceType
+          ? _value.recurrenceType
+          : recurrenceType // ignore: cast_nullable_to_non_nullable
+              as RecurrenceType,
+      completionDates: null == completionDates
+          ? _value.completionDates
+          : completionDates // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      daysOfWeek: freezed == daysOfWeek
+          ? _value.daysOfWeek
+          : daysOfWeek // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      everyXDays: freezed == everyXDays
+          ? _value.everyXDays
+          : everyXDays // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
-  }
-
-  /// Create a copy of HabitEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $RecurrenceDetailsEntityCopyWith<$Res> get recurrenceDetails {
-    return $RecurrenceDetailsEntityCopyWith<$Res>(_value.recurrenceDetails,
-        (value) {
-      return _then(_value.copyWith(recurrenceDetails: value) as $Val);
-    });
   }
 }
 
@@ -122,12 +125,11 @@ abstract class _$$HabitEntityImplCopyWith<$Res>
       {String id,
       String name,
       String? description,
-      RecurrenceDetailsEntity recurrenceDetails,
       DateTime createdAt,
-      DateTime completedDate});
-
-  @override
-  $RecurrenceDetailsEntityCopyWith<$Res> get recurrenceDetails;
+      RecurrenceType recurrenceType,
+      List<String> completionDates,
+      List<int>? daysOfWeek,
+      int? everyXDays});
 }
 
 /// @nodoc
@@ -146,9 +148,11 @@ class __$$HabitEntityImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? description = freezed,
-    Object? recurrenceDetails = null,
     Object? createdAt = null,
-    Object? completedDate = null,
+    Object? recurrenceType = null,
+    Object? completionDates = null,
+    Object? daysOfWeek = freezed,
+    Object? everyXDays = freezed,
   }) {
     return _then(_$HabitEntityImpl(
       id: null == id
@@ -163,18 +167,26 @@ class __$$HabitEntityImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      recurrenceDetails: null == recurrenceDetails
-          ? _value.recurrenceDetails
-          : recurrenceDetails // ignore: cast_nullable_to_non_nullable
-              as RecurrenceDetailsEntity,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      completedDate: null == completedDate
-          ? _value.completedDate
-          : completedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      recurrenceType: null == recurrenceType
+          ? _value.recurrenceType
+          : recurrenceType // ignore: cast_nullable_to_non_nullable
+              as RecurrenceType,
+      completionDates: null == completionDates
+          ? _value._completionDates
+          : completionDates // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      daysOfWeek: freezed == daysOfWeek
+          ? _value._daysOfWeek
+          : daysOfWeek // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      everyXDays: freezed == everyXDays
+          ? _value.everyXDays
+          : everyXDays // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -186,9 +198,13 @@ class _$HabitEntityImpl implements _HabitEntity {
       {required this.id,
       required this.name,
       this.description,
-      required this.recurrenceDetails,
       required this.createdAt,
-      required this.completedDate});
+      required this.recurrenceType,
+      final List<String> completionDates = const [],
+      final List<int>? daysOfWeek,
+      this.everyXDays})
+      : _completionDates = completionDates,
+        _daysOfWeek = daysOfWeek;
 
   @override
   final String id;
@@ -197,15 +213,39 @@ class _$HabitEntityImpl implements _HabitEntity {
   @override
   final String? description;
   @override
-  final RecurrenceDetailsEntity recurrenceDetails;
-  @override
   final DateTime createdAt;
   @override
-  final DateTime completedDate;
+  final RecurrenceType recurrenceType;
+// Enum for Daily, Weekly, Every X Days
+  final List<String> _completionDates;
+// Enum for Daily, Weekly, Every X Days
+  @override
+  @JsonKey()
+  List<String> get completionDates {
+    if (_completionDates is EqualUnmodifiableListView) return _completionDates;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_completionDates);
+  }
+
+// Stores YYYY-MM-DD strings for completed days
+  final List<int>? _daysOfWeek;
+// Stores YYYY-MM-DD strings for completed days
+  @override
+  List<int>? get daysOfWeek {
+    final value = _daysOfWeek;
+    if (value == null) return null;
+    if (_daysOfWeek is EqualUnmodifiableListView) return _daysOfWeek;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+// For weekly recurrence: 1=Monday, 7=Sunday
+  @override
+  final int? everyXDays;
 
   @override
   String toString() {
-    return 'HabitEntity(id: $id, name: $name, description: $description, recurrenceDetails: $recurrenceDetails, createdAt: $createdAt, completedDate: $completedDate)';
+    return 'HabitEntity(id: $id, name: $name, description: $description, createdAt: $createdAt, recurrenceType: $recurrenceType, completionDates: $completionDates, daysOfWeek: $daysOfWeek, everyXDays: $everyXDays)';
   }
 
   @override
@@ -217,17 +257,29 @@ class _$HabitEntityImpl implements _HabitEntity {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.recurrenceDetails, recurrenceDetails) ||
-                other.recurrenceDetails == recurrenceDetails) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.completedDate, completedDate) ||
-                other.completedDate == completedDate));
+            (identical(other.recurrenceType, recurrenceType) ||
+                other.recurrenceType == recurrenceType) &&
+            const DeepCollectionEquality()
+                .equals(other._completionDates, _completionDates) &&
+            const DeepCollectionEquality()
+                .equals(other._daysOfWeek, _daysOfWeek) &&
+            (identical(other.everyXDays, everyXDays) ||
+                other.everyXDays == everyXDays));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description,
-      recurrenceDetails, createdAt, completedDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      description,
+      createdAt,
+      recurrenceType,
+      const DeepCollectionEquality().hash(_completionDates),
+      const DeepCollectionEquality().hash(_daysOfWeek),
+      everyXDays);
 
   /// Create a copy of HabitEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -243,9 +295,11 @@ abstract class _HabitEntity implements HabitEntity {
       {required final String id,
       required final String name,
       final String? description,
-      required final RecurrenceDetailsEntity recurrenceDetails,
       required final DateTime createdAt,
-      required final DateTime completedDate}) = _$HabitEntityImpl;
+      required final RecurrenceType recurrenceType,
+      final List<String> completionDates,
+      final List<int>? daysOfWeek,
+      final int? everyXDays}) = _$HabitEntityImpl;
 
   @override
   String get id;
@@ -254,11 +308,16 @@ abstract class _HabitEntity implements HabitEntity {
   @override
   String? get description;
   @override
-  RecurrenceDetailsEntity get recurrenceDetails;
-  @override
   DateTime get createdAt;
   @override
-  DateTime get completedDate;
+  RecurrenceType get recurrenceType; // Enum for Daily, Weekly, Every X Days
+  @override
+  List<String>
+      get completionDates; // Stores YYYY-MM-DD strings for completed days
+  @override
+  List<int>? get daysOfWeek; // For weekly recurrence: 1=Monday, 7=Sunday
+  @override
+  int? get everyXDays;
 
   /// Create a copy of HabitEntity
   /// with the given fields replaced by the non-null parameter values.

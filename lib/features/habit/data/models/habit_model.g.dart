@@ -21,16 +21,17 @@ class HabitModelAdapter extends TypeAdapter<HabitModel> {
       name: fields[1] as String,
       description: fields[2] as String?,
       recurrenceType: fields[3] as RecurrenceType,
-      recurrenceValue: fields[4] as dynamic,
-      createdAt: fields[5] as DateTime,
-      completedDate: fields[6] as DateTime,
+      daysOfWeek: (fields[4] as List?)?.cast<int>(),
+      everyXDays: fields[5] as int?,
+      createdAt: fields[6] as DateTime,
+      completionDates: (fields[7] as List).cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, HabitModel obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -40,11 +41,13 @@ class HabitModelAdapter extends TypeAdapter<HabitModel> {
       ..writeByte(3)
       ..write(obj.recurrenceType)
       ..writeByte(4)
-      ..write(obj.recurrenceValue)
+      ..write(obj.daysOfWeek)
       ..writeByte(5)
-      ..write(obj.createdAt)
+      ..write(obj.everyXDays)
       ..writeByte(6)
-      ..write(obj.completedDate);
+      ..write(obj.createdAt)
+      ..writeByte(7)
+      ..write(obj.completionDates);
   }
 
   @override
@@ -62,26 +65,34 @@ class HabitModelAdapter extends TypeAdapter<HabitModel> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$HabitImpl _$$HabitImplFromJson(Map<String, dynamic> json) => _$HabitImpl(
+_$HabitModelImpl _$$HabitModelImplFromJson(Map<String, dynamic> json) =>
+    _$HabitModelImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String?,
       recurrenceType:
           $enumDecode(_$RecurrenceTypeEnumMap, json['recurrenceType']),
-      recurrenceValue: json['recurrenceValue'],
+      daysOfWeek: (json['daysOfWeek'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
+      everyXDays: (json['everyXDays'] as num?)?.toInt(),
       createdAt: DateTime.parse(json['createdAt'] as String),
-      completedDate: DateTime.parse(json['completedDate'] as String),
+      completionDates: (json['completionDates'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
-Map<String, dynamic> _$$HabitImplToJson(_$HabitImpl instance) =>
+Map<String, dynamic> _$$HabitModelImplToJson(_$HabitModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
       'recurrenceType': _$RecurrenceTypeEnumMap[instance.recurrenceType]!,
-      'recurrenceValue': instance.recurrenceValue,
+      'daysOfWeek': instance.daysOfWeek,
+      'everyXDays': instance.everyXDays,
       'createdAt': instance.createdAt.toIso8601String(),
-      'completedDate': instance.completedDate.toIso8601String(),
+      'completionDates': instance.completionDates,
     };
 
 const _$RecurrenceTypeEnumMap = {

@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 HabitModel _$HabitModelFromJson(Map<String, dynamic> json) {
-  return _Habit.fromJson(json);
+  return _HabitModel.fromJson(json);
 }
 
 /// @nodoc
@@ -28,16 +28,18 @@ mixin _$HabitModel {
   String? get description => throw _privateConstructorUsedError;
   @HiveField(3)
   RecurrenceType get recurrenceType =>
-      throw _privateConstructorUsedError; // recurrenceValue will store different types of data based on recurrenceType
-// For 'weekly': List<DayOfWeek> (e.g., [DayOfWeek.monday, DayOfWeek.wednesday])
-// For 'everyXDays': int (e.g., 3 for every 3 days)
-// For 'daily': This field might not be used or could be null
+      throw _privateConstructorUsedError; // Using separate fields for clarity and type safety
   @HiveField(4)
-  dynamic get recurrenceValue => throw _privateConstructorUsedError;
+  List<int>? get daysOfWeek =>
+      throw _privateConstructorUsedError; // For weekly recurrence (e.g., [1, 3, 5] for Mon, Wed, Fri)
   @HiveField(5)
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  int? get everyXDays =>
+      throw _privateConstructorUsedError; // For "every X days" recurrence (e.g., 3)
   @HiveField(6)
-  DateTime get completedDate => throw _privateConstructorUsedError;
+  DateTime get createdAt =>
+      throw _privateConstructorUsedError; // Crucially, this tracks multiple completion dates
+  @HiveField(7)
+  List<String> get completionDates => throw _privateConstructorUsedError;
 
   /// Serializes this HabitModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -60,9 +62,10 @@ abstract class $HabitModelCopyWith<$Res> {
       @HiveField(1) String name,
       @HiveField(2) String? description,
       @HiveField(3) RecurrenceType recurrenceType,
-      @HiveField(4) dynamic recurrenceValue,
-      @HiveField(5) DateTime createdAt,
-      @HiveField(6) DateTime completedDate});
+      @HiveField(4) List<int>? daysOfWeek,
+      @HiveField(5) int? everyXDays,
+      @HiveField(6) DateTime createdAt,
+      @HiveField(7) List<String> completionDates});
 }
 
 /// @nodoc
@@ -84,9 +87,10 @@ class _$HabitModelCopyWithImpl<$Res, $Val extends HabitModel>
     Object? name = null,
     Object? description = freezed,
     Object? recurrenceType = null,
-    Object? recurrenceValue = freezed,
+    Object? daysOfWeek = freezed,
+    Object? everyXDays = freezed,
     Object? createdAt = null,
-    Object? completedDate = null,
+    Object? completionDates = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -105,27 +109,32 @@ class _$HabitModelCopyWithImpl<$Res, $Val extends HabitModel>
           ? _value.recurrenceType
           : recurrenceType // ignore: cast_nullable_to_non_nullable
               as RecurrenceType,
-      recurrenceValue: freezed == recurrenceValue
-          ? _value.recurrenceValue
-          : recurrenceValue // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+      daysOfWeek: freezed == daysOfWeek
+          ? _value.daysOfWeek
+          : daysOfWeek // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      everyXDays: freezed == everyXDays
+          ? _value.everyXDays
+          : everyXDays // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      completedDate: null == completedDate
-          ? _value.completedDate
-          : completedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      completionDates: null == completionDates
+          ? _value.completionDates
+          : completionDates // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$HabitImplCopyWith<$Res> implements $HabitModelCopyWith<$Res> {
-  factory _$$HabitImplCopyWith(
-          _$HabitImpl value, $Res Function(_$HabitImpl) then) =
-      __$$HabitImplCopyWithImpl<$Res>;
+abstract class _$$HabitModelImplCopyWith<$Res>
+    implements $HabitModelCopyWith<$Res> {
+  factory _$$HabitModelImplCopyWith(
+          _$HabitModelImpl value, $Res Function(_$HabitModelImpl) then) =
+      __$$HabitModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -133,17 +142,18 @@ abstract class _$$HabitImplCopyWith<$Res> implements $HabitModelCopyWith<$Res> {
       @HiveField(1) String name,
       @HiveField(2) String? description,
       @HiveField(3) RecurrenceType recurrenceType,
-      @HiveField(4) dynamic recurrenceValue,
-      @HiveField(5) DateTime createdAt,
-      @HiveField(6) DateTime completedDate});
+      @HiveField(4) List<int>? daysOfWeek,
+      @HiveField(5) int? everyXDays,
+      @HiveField(6) DateTime createdAt,
+      @HiveField(7) List<String> completionDates});
 }
 
 /// @nodoc
-class __$$HabitImplCopyWithImpl<$Res>
-    extends _$HabitModelCopyWithImpl<$Res, _$HabitImpl>
-    implements _$$HabitImplCopyWith<$Res> {
-  __$$HabitImplCopyWithImpl(
-      _$HabitImpl _value, $Res Function(_$HabitImpl) _then)
+class __$$HabitModelImplCopyWithImpl<$Res>
+    extends _$HabitModelCopyWithImpl<$Res, _$HabitModelImpl>
+    implements _$$HabitModelImplCopyWith<$Res> {
+  __$$HabitModelImplCopyWithImpl(
+      _$HabitModelImpl _value, $Res Function(_$HabitModelImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of HabitModel
@@ -155,11 +165,12 @@ class __$$HabitImplCopyWithImpl<$Res>
     Object? name = null,
     Object? description = freezed,
     Object? recurrenceType = null,
-    Object? recurrenceValue = freezed,
+    Object? daysOfWeek = freezed,
+    Object? everyXDays = freezed,
     Object? createdAt = null,
-    Object? completedDate = null,
+    Object? completionDates = null,
   }) {
-    return _then(_$HabitImpl(
+    return _then(_$HabitModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -176,36 +187,43 @@ class __$$HabitImplCopyWithImpl<$Res>
           ? _value.recurrenceType
           : recurrenceType // ignore: cast_nullable_to_non_nullable
               as RecurrenceType,
-      recurrenceValue: freezed == recurrenceValue
-          ? _value.recurrenceValue
-          : recurrenceValue // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+      daysOfWeek: freezed == daysOfWeek
+          ? _value._daysOfWeek
+          : daysOfWeek // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      everyXDays: freezed == everyXDays
+          ? _value.everyXDays
+          : everyXDays // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      completedDate: null == completedDate
-          ? _value.completedDate
-          : completedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      completionDates: null == completionDates
+          ? _value._completionDates
+          : completionDates // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$HabitImpl implements _Habit {
-  const _$HabitImpl(
+class _$HabitModelImpl implements _HabitModel {
+  const _$HabitModelImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) required this.name,
       @HiveField(2) this.description,
       @HiveField(3) required this.recurrenceType,
-      @HiveField(4) this.recurrenceValue,
-      @HiveField(5) required this.createdAt,
-      @HiveField(6) required this.completedDate});
+      @HiveField(4) final List<int>? daysOfWeek,
+      @HiveField(5) this.everyXDays,
+      @HiveField(6) required this.createdAt,
+      @HiveField(7) final List<String> completionDates = const []})
+      : _daysOfWeek = daysOfWeek,
+        _completionDates = completionDates;
 
-  factory _$HabitImpl.fromJson(Map<String, dynamic> json) =>
-      _$$HabitImplFromJson(json);
+  factory _$HabitModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HabitModelImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -219,30 +237,49 @@ class _$HabitImpl implements _Habit {
   @override
   @HiveField(3)
   final RecurrenceType recurrenceType;
-// recurrenceValue will store different types of data based on recurrenceType
-// For 'weekly': List<DayOfWeek> (e.g., [DayOfWeek.monday, DayOfWeek.wednesday])
-// For 'everyXDays': int (e.g., 3 for every 3 days)
-// For 'daily': This field might not be used or could be null
+// Using separate fields for clarity and type safety
+  final List<int>? _daysOfWeek;
+// Using separate fields for clarity and type safety
   @override
   @HiveField(4)
-  final dynamic recurrenceValue;
+  List<int>? get daysOfWeek {
+    final value = _daysOfWeek;
+    if (value == null) return null;
+    if (_daysOfWeek is EqualUnmodifiableListView) return _daysOfWeek;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+// For weekly recurrence (e.g., [1, 3, 5] for Mon, Wed, Fri)
   @override
   @HiveField(5)
-  final DateTime createdAt;
+  final int? everyXDays;
+// For "every X days" recurrence (e.g., 3)
   @override
   @HiveField(6)
-  final DateTime completedDate;
+  final DateTime createdAt;
+// Crucially, this tracks multiple completion dates
+  final List<String> _completionDates;
+// Crucially, this tracks multiple completion dates
+  @override
+  @JsonKey()
+  @HiveField(7)
+  List<String> get completionDates {
+    if (_completionDates is EqualUnmodifiableListView) return _completionDates;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_completionDates);
+  }
 
   @override
   String toString() {
-    return 'HabitModel(id: $id, name: $name, description: $description, recurrenceType: $recurrenceType, recurrenceValue: $recurrenceValue, createdAt: $createdAt, completedDate: $completedDate)';
+    return 'HabitModel(id: $id, name: $name, description: $description, recurrenceType: $recurrenceType, daysOfWeek: $daysOfWeek, everyXDays: $everyXDays, createdAt: $createdAt, completionDates: $completionDates)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HabitImpl &&
+            other is _$HabitModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -250,11 +287,13 @@ class _$HabitImpl implements _Habit {
             (identical(other.recurrenceType, recurrenceType) ||
                 other.recurrenceType == recurrenceType) &&
             const DeepCollectionEquality()
-                .equals(other.recurrenceValue, recurrenceValue) &&
+                .equals(other._daysOfWeek, _daysOfWeek) &&
+            (identical(other.everyXDays, everyXDays) ||
+                other.everyXDays == everyXDays) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.completedDate, completedDate) ||
-                other.completedDate == completedDate));
+            const DeepCollectionEquality()
+                .equals(other._completionDates, _completionDates));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -265,37 +304,40 @@ class _$HabitImpl implements _Habit {
       name,
       description,
       recurrenceType,
-      const DeepCollectionEquality().hash(recurrenceValue),
+      const DeepCollectionEquality().hash(_daysOfWeek),
+      everyXDays,
       createdAt,
-      completedDate);
+      const DeepCollectionEquality().hash(_completionDates));
 
   /// Create a copy of HabitModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$HabitImplCopyWith<_$HabitImpl> get copyWith =>
-      __$$HabitImplCopyWithImpl<_$HabitImpl>(this, _$identity);
+  _$$HabitModelImplCopyWith<_$HabitModelImpl> get copyWith =>
+      __$$HabitModelImplCopyWithImpl<_$HabitModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HabitImplToJson(
+    return _$$HabitModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _Habit implements HabitModel {
-  const factory _Habit(
+abstract class _HabitModel implements HabitModel {
+  const factory _HabitModel(
       {@HiveField(0) required final String id,
       @HiveField(1) required final String name,
       @HiveField(2) final String? description,
       @HiveField(3) required final RecurrenceType recurrenceType,
-      @HiveField(4) final dynamic recurrenceValue,
-      @HiveField(5) required final DateTime createdAt,
-      @HiveField(6) required final DateTime completedDate}) = _$HabitImpl;
+      @HiveField(4) final List<int>? daysOfWeek,
+      @HiveField(5) final int? everyXDays,
+      @HiveField(6) required final DateTime createdAt,
+      @HiveField(7) final List<String> completionDates}) = _$HabitModelImpl;
 
-  factory _Habit.fromJson(Map<String, dynamic> json) = _$HabitImpl.fromJson;
+  factory _HabitModel.fromJson(Map<String, dynamic> json) =
+      _$HabitModelImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -309,24 +351,25 @@ abstract class _Habit implements HabitModel {
   @override
   @HiveField(3)
   RecurrenceType
-      get recurrenceType; // recurrenceValue will store different types of data based on recurrenceType
-// For 'weekly': List<DayOfWeek> (e.g., [DayOfWeek.monday, DayOfWeek.wednesday])
-// For 'everyXDays': int (e.g., 3 for every 3 days)
-// For 'daily': This field might not be used or could be null
+      get recurrenceType; // Using separate fields for clarity and type safety
   @override
   @HiveField(4)
-  dynamic get recurrenceValue;
+  List<int>?
+      get daysOfWeek; // For weekly recurrence (e.g., [1, 3, 5] for Mon, Wed, Fri)
   @override
   @HiveField(5)
-  DateTime get createdAt;
+  int? get everyXDays; // For "every X days" recurrence (e.g., 3)
   @override
   @HiveField(6)
-  DateTime get completedDate;
+  DateTime get createdAt; // Crucially, this tracks multiple completion dates
+  @override
+  @HiveField(7)
+  List<String> get completionDates;
 
   /// Create a copy of HabitModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HabitImplCopyWith<_$HabitImpl> get copyWith =>
+  _$$HabitModelImplCopyWith<_$HabitModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

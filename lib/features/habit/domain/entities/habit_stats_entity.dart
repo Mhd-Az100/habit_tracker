@@ -1,11 +1,11 @@
-class HabitStatsEntity {
-  final int totalCompletions;
-  final int currentStreak;
-  final int longestStreak;
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'habit_stats_entity.freezed.dart';
 
-  HabitStatsEntity({
-    required this.totalCompletions,
-    required this.currentStreak,
-    required this.longestStreak,
-  });
+@freezed
+class HabitStatsEntity with _$HabitStatsEntity {
+  const factory HabitStatsEntity({
+    required int totalCompletions,
+    required int currentStreak,
+    required int longestStreak,
+  }) = _HabitStatsEntity;
 }
