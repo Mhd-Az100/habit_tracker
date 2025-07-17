@@ -5,17 +5,17 @@ part 'day_of_week.g.dart';
 @HiveType(typeId: 1, adapterName: 'DayOfWeekAdapter')
 enum DayOfWeek {
   @HiveField(0)
-  monday,
-  @HiveField(1)
-  tuesday,
-  @HiveField(2)
-  wednesday,
-  @HiveField(3)
-  thursday,
-  @HiveField(4)
-  friday,
-  @HiveField(5)
-  saturday,
-  @HiveField(6)
   sunday,
+  @HiveField(1)
+  monday,
+  @HiveField(2)
+  tuesday,
+  @HiveField(3)
+  wednesday,
+  @HiveField(4)
+  thursday,
+  @HiveField(5)
+  friday,
+  @HiveField(6)
+  saturday,
 }
