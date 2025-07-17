@@ -9,12 +9,11 @@ extension HabitEntityMapper on HabitEntity {
       id: id,
       name: name,
       description: description,
-      recurrenceType: recurrenceType, // Direct map
-      // Map based on recurrenceType
+      recurrenceType: recurrenceType, 
       daysOfWeek: recurrenceType == RecurrenceType.weekly ? daysOfWeek : null,
       everyXDays: recurrenceType == RecurrenceType.everyXDays ? everyXDays : null,
       createdAt: createdAt,
-      completionDates: completionDates, // Direct map, now a List<String>
+      completionDates: completionDates,
     );
   }
 }

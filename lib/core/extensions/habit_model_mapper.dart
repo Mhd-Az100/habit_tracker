@@ -8,11 +8,11 @@ extension HabitModelMapper on HabitModel {
       name: name,
       description: description,
       createdAt: createdAt,
-      // Correctly map recurrence properties to the RecurrenceDetailsEntity
-      recurrenceType: recurrenceType, // Direct map to the entity's type
-      daysOfWeek: daysOfWeek, // Direct map
-      everyXDays: everyXDays, // Direct map
-      completionDates: completionDates, // Correctly map the list of completion dates
+      recurrenceType: recurrenceType,
+      daysOfWeek: daysOfWeek,
+      everyXDays: everyXDays,
+      completionDates: completionDates,
     );
   }
 }
+
