@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/core/enums/day_of_week.dart';
 import 'package:habit_tracker/core/enums/recurrence_type.dart';
+import 'package:habit_tracker/core/extensions/date_time_extension.dart';
 import 'package:habit_tracker/core/extensions/string_extension.dart';
 import 'package:habit_tracker/core/helpers/show_bottom_sheet.dart';
 import 'package:habit_tracker/core/widgets/full_page_bottom_sheet.dart';
@@ -66,7 +67,7 @@ class HabitDetailSheet extends StatelessWidget {
             const SizedBox(height: 16),
             Text('Created On:', style: Theme.of(context).textTheme.titleMedium),
             Text(
-              '${habit.createdAt.day}/${habit.createdAt.month}/${habit.createdAt.year}',
+             '${habit.createdAt.toNormalizedDateString()} at ${habit.createdAt.toNormalizedTimeString()}',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const Spacer(),
@@ -126,11 +127,8 @@ class HabitDetailSheet extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.of(ctx).pop(); // Dismiss confirmation dialog
-              Navigator.of(context).pop(); // Dismiss detail sheet
-              // FIX: Use the 'context' that has the BlocProvider as an ancestor.
-              // The 'context' parameter of _confirmDelete is the one from HabitDetailSheet's build method.
-              // It should work if HabitsScreen is correctly set up.
+              Navigator.of(ctx).pop(); 
+              Navigator.of(context).pop(); 
               context.read<HabitBloc>().add(HabitEvent.deleteHabit(habit.id));
             },
             style: ElevatedButton.styleFrom(

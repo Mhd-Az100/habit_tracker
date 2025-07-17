@@ -127,7 +127,7 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
               Wrap(
                 spacing: 8.0,
                 children: List.generate(7, (index) {
-                  final dayIntValue = index + 1;
+                  final dayIntValue = index;
                   final dayOfWeek = DayOfWeek.values[index];
                   final isSelected = _selectedDaysOfWeek.contains(dayIntValue);
 

@@ -5,4 +5,9 @@ extension DateTimeX on DateTime {
   String toNormalizedDateString() {
     return '$year-${month.toString().padLeft(2, '0')}-${day.toString().padLeft(2, '0')}';
   }
+  /// Formats the [DateTime] object into a 'HH:MM' string.
+  /// This format is suitable for displaying time in a user-friendly way.
+  String toNormalizedTimeString() {
+    return '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
+  }
 }
