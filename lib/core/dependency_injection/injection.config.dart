@@ -44,6 +44,8 @@ import 'package:habit_tracker/features/habit/presentation/controller/add_cubit/a
     as _i632;
 import 'package:habit_tracker/features/habit/presentation/controller/bloc/habit_bloc.dart'
     as _i127;
+import 'package:habit_tracker/features/habit/presentation/controller/calendar_cubit/calendar_cubit.dart'
+    as _i367;
 import 'package:habit_tracker/features/habit/presentation/controller/delete_cubit/delete_habit_cubit.dart'
     as _i1056;
 import 'package:hive/hive.dart' as _i979;
@@ -65,6 +67,7 @@ extension GetItInjectableX on _i174.GetIt {
     final dataSourceModule = _$DataSourceModule();
     final cubitModule = _$CubitModule();
     gh.factory<_i1056.HabitDeleteCubit>(() => _i1056.HabitDeleteCubit());
+    gh.factory<_i367.CalendarCubit>(() => _i367.CalendarCubit());
     await gh.singletonAsync<_i979.Box<_i830.HabitModel>>(
       () => hiveModule.habitBox,
       preResolve: true,
