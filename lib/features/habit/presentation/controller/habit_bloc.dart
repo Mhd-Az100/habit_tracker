@@ -1,11 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:habit_tracker/features/habit/domain/entities/habit_entity.dart';
+import 'package:habit_tracker/features/habit/domain/entities/habit_stats_entity.dart';
 import 'package:habit_tracker/features/habit/domain/usecases/add_habit_usecase.dart';
 import 'package:habit_tracker/features/habit/domain/usecases/complete_habit_usecase.dart';
 import 'package:habit_tracker/features/habit/domain/usecases/delete_habit_usecase.dart';
 import 'package:habit_tracker/features/habit/domain/usecases/get_all_habits_usecase.dart';
 import 'package:habit_tracker/features/habit/domain/usecases/get_habit_by_id_usecase.dart';
+import 'package:habit_tracker/features/habit/domain/usecases/get_habit_stats_usecase.dart';
 import 'package:habit_tracker/features/habit/domain/usecases/update_habit_usecase.dart';
 import 'package:injectable/injectable.dart';
 
@@ -21,6 +23,7 @@ class HabitBloc extends Bloc<HabitEvent, HabitState> {
   final DeleteHabitUseCase deleteHabit;
   final GetHabitByIdUseCase getHabitById;
   final CompleteHabitUseCase completeHabit;
+  final GetHabitStatsUseCase getHabitStats;
 
   HabitBloc({
     required this.getAllHabits,
@@ -29,6 +32,7 @@ class HabitBloc extends Bloc<HabitEvent, HabitState> {
     required this.deleteHabit,
     required this.getHabitById,
     required this.completeHabit,
+    required this.getHabitStats,
   }) : super(const HabitState.initial()) {
     on<_LoadHabits>((event, emit) async {
       emit(const HabitState.loading());
@@ -68,6 +72,16 @@ class HabitBloc extends Bloc<HabitEvent, HabitState> {
       await completeHabit(event.habitId, event.date);
       final habits = await getAllHabits();
       emit(HabitState.loaded(habits));
+    });
+
+    on<_GetHabitState>((event, emit) async {
+      emit(const HabitState.loading());
+      try {
+        final stats = await getHabitStats(event.habitId);
+        emit(HabitState.statsLoaded(stats));
+      } catch (e) {
+        emit(HabitState.error('Failed to load stats: ${e.toString()}'));
+      }
     });
   }
 }

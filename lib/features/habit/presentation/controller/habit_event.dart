@@ -8,4 +8,6 @@ class HabitEvent with _$HabitEvent {
   const factory HabitEvent.deleteHabit(String id) = _DeleteHabit;
   const factory HabitEvent.getHabitById(String id) = _GetHabitById;
   const factory HabitEvent.completeHabit(String habitId, DateTime date) = _CompleteHabit;
+  const factory HabitEvent.getHabitState(String habitId) = _GetHabitState;
+
 }
