@@ -9,7 +9,7 @@ class HabitEntity with _$HabitEntity {
     required String id,
     required String name,
     String? description,
-    required RecurrenceDetails recurrenceDetails,
+    required RecurrenceDetailsEntity recurrenceDetails,
     required DateTime createdAt, 
     required DateTime completedDate,
   }) = _HabitEntity;

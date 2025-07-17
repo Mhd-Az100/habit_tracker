@@ -19,7 +19,8 @@ mixin _$HabitEntity {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  RecurrenceDetails get recurrenceDetails => throw _privateConstructorUsedError;
+  RecurrenceDetailsEntity get recurrenceDetails =>
+      throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get completedDate => throw _privateConstructorUsedError;
 
@@ -40,11 +41,11 @@ abstract class $HabitEntityCopyWith<$Res> {
       {String id,
       String name,
       String? description,
-      RecurrenceDetails recurrenceDetails,
+      RecurrenceDetailsEntity recurrenceDetails,
       DateTime createdAt,
       DateTime completedDate});
 
-  $RecurrenceDetailsCopyWith<$Res> get recurrenceDetails;
+  $RecurrenceDetailsEntityCopyWith<$Res> get recurrenceDetails;
 }
 
 /// @nodoc
@@ -85,7 +86,7 @@ class _$HabitEntityCopyWithImpl<$Res, $Val extends HabitEntity>
       recurrenceDetails: null == recurrenceDetails
           ? _value.recurrenceDetails
           : recurrenceDetails // ignore: cast_nullable_to_non_nullable
-              as RecurrenceDetails,
+              as RecurrenceDetailsEntity,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -101,8 +102,9 @@ class _$HabitEntityCopyWithImpl<$Res, $Val extends HabitEntity>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $RecurrenceDetailsCopyWith<$Res> get recurrenceDetails {
-    return $RecurrenceDetailsCopyWith<$Res>(_value.recurrenceDetails, (value) {
+  $RecurrenceDetailsEntityCopyWith<$Res> get recurrenceDetails {
+    return $RecurrenceDetailsEntityCopyWith<$Res>(_value.recurrenceDetails,
+        (value) {
       return _then(_value.copyWith(recurrenceDetails: value) as $Val);
     });
   }
@@ -120,12 +122,12 @@ abstract class _$$HabitEntityImplCopyWith<$Res>
       {String id,
       String name,
       String? description,
-      RecurrenceDetails recurrenceDetails,
+      RecurrenceDetailsEntity recurrenceDetails,
       DateTime createdAt,
       DateTime completedDate});
 
   @override
-  $RecurrenceDetailsCopyWith<$Res> get recurrenceDetails;
+  $RecurrenceDetailsEntityCopyWith<$Res> get recurrenceDetails;
 }
 
 /// @nodoc
@@ -164,7 +166,7 @@ class __$$HabitEntityImplCopyWithImpl<$Res>
       recurrenceDetails: null == recurrenceDetails
           ? _value.recurrenceDetails
           : recurrenceDetails // ignore: cast_nullable_to_non_nullable
-              as RecurrenceDetails,
+              as RecurrenceDetailsEntity,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -195,7 +197,7 @@ class _$HabitEntityImpl implements _HabitEntity {
   @override
   final String? description;
   @override
-  final RecurrenceDetails recurrenceDetails;
+  final RecurrenceDetailsEntity recurrenceDetails;
   @override
   final DateTime createdAt;
   @override
@@ -241,7 +243,7 @@ abstract class _HabitEntity implements HabitEntity {
       {required final String id,
       required final String name,
       final String? description,
-      required final RecurrenceDetails recurrenceDetails,
+      required final RecurrenceDetailsEntity recurrenceDetails,
       required final DateTime createdAt,
       required final DateTime completedDate}) = _$HabitEntityImpl;
 
@@ -252,7 +254,7 @@ abstract class _HabitEntity implements HabitEntity {
   @override
   String? get description;
   @override
-  RecurrenceDetails get recurrenceDetails;
+  RecurrenceDetailsEntity get recurrenceDetails;
   @override
   DateTime get createdAt;
   @override

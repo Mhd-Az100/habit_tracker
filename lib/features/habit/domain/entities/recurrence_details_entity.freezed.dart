@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$RecurrenceDetails {
+mixin _$RecurrenceDetailsEntity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() daily,
@@ -63,23 +63,24 @@ mixin _$RecurrenceDetails {
 }
 
 /// @nodoc
-abstract class $RecurrenceDetailsCopyWith<$Res> {
-  factory $RecurrenceDetailsCopyWith(
-          RecurrenceDetails value, $Res Function(RecurrenceDetails) then) =
-      _$RecurrenceDetailsCopyWithImpl<$Res, RecurrenceDetails>;
+abstract class $RecurrenceDetailsEntityCopyWith<$Res> {
+  factory $RecurrenceDetailsEntityCopyWith(RecurrenceDetailsEntity value,
+          $Res Function(RecurrenceDetailsEntity) then) =
+      _$RecurrenceDetailsEntityCopyWithImpl<$Res, RecurrenceDetailsEntity>;
 }
 
 /// @nodoc
-class _$RecurrenceDetailsCopyWithImpl<$Res, $Val extends RecurrenceDetails>
-    implements $RecurrenceDetailsCopyWith<$Res> {
-  _$RecurrenceDetailsCopyWithImpl(this._value, this._then);
+class _$RecurrenceDetailsEntityCopyWithImpl<$Res,
+        $Val extends RecurrenceDetailsEntity>
+    implements $RecurrenceDetailsEntityCopyWith<$Res> {
+  _$RecurrenceDetailsEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of RecurrenceDetails
+  /// Create a copy of RecurrenceDetailsEntity
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -93,14 +94,15 @@ abstract class _$$RecurrenceDetailsDailyImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$RecurrenceDetailsDailyImplCopyWithImpl<$Res>
-    extends _$RecurrenceDetailsCopyWithImpl<$Res, _$RecurrenceDetailsDailyImpl>
+    extends _$RecurrenceDetailsEntityCopyWithImpl<$Res,
+        _$RecurrenceDetailsDailyImpl>
     implements _$$RecurrenceDetailsDailyImplCopyWith<$Res> {
   __$$RecurrenceDetailsDailyImplCopyWithImpl(
       _$RecurrenceDetailsDailyImpl _value,
       $Res Function(_$RecurrenceDetailsDailyImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of RecurrenceDetails
+  /// Create a copy of RecurrenceDetailsEntity
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -111,7 +113,7 @@ class _$RecurrenceDetailsDailyImpl extends _RecurrenceDetailsDaily {
 
   @override
   String toString() {
-    return 'RecurrenceDetails.daily()';
+    return 'RecurrenceDetailsEntity.daily()';
   }
 
   @override
@@ -193,7 +195,7 @@ class _$RecurrenceDetailsDailyImpl extends _RecurrenceDetailsDaily {
   }
 }
 
-abstract class _RecurrenceDetailsDaily extends RecurrenceDetails {
+abstract class _RecurrenceDetailsDaily extends RecurrenceDetailsEntity {
   const factory _RecurrenceDetailsDaily() = _$RecurrenceDetailsDailyImpl;
   const _RecurrenceDetailsDaily._() : super._();
 }
@@ -210,14 +212,15 @@ abstract class _$$RecurrenceDetailsWeeklyImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$RecurrenceDetailsWeeklyImplCopyWithImpl<$Res>
-    extends _$RecurrenceDetailsCopyWithImpl<$Res, _$RecurrenceDetailsWeeklyImpl>
+    extends _$RecurrenceDetailsEntityCopyWithImpl<$Res,
+        _$RecurrenceDetailsWeeklyImpl>
     implements _$$RecurrenceDetailsWeeklyImplCopyWith<$Res> {
   __$$RecurrenceDetailsWeeklyImplCopyWithImpl(
       _$RecurrenceDetailsWeeklyImpl _value,
       $Res Function(_$RecurrenceDetailsWeeklyImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of RecurrenceDetails
+  /// Create a copy of RecurrenceDetailsEntity
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -250,7 +253,7 @@ class _$RecurrenceDetailsWeeklyImpl extends _RecurrenceDetailsWeekly {
 
   @override
   String toString() {
-    return 'RecurrenceDetails.weekly(days: $days)';
+    return 'RecurrenceDetailsEntity.weekly(days: $days)';
   }
 
   @override
@@ -265,7 +268,7 @@ class _$RecurrenceDetailsWeeklyImpl extends _RecurrenceDetailsWeekly {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_days));
 
-  /// Create a copy of RecurrenceDetails
+  /// Create a copy of RecurrenceDetailsEntity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -343,14 +346,14 @@ class _$RecurrenceDetailsWeeklyImpl extends _RecurrenceDetailsWeekly {
   }
 }
 
-abstract class _RecurrenceDetailsWeekly extends RecurrenceDetails {
+abstract class _RecurrenceDetailsWeekly extends RecurrenceDetailsEntity {
   const factory _RecurrenceDetailsWeekly(
       {required final List<DayOfWeek> days}) = _$RecurrenceDetailsWeeklyImpl;
   const _RecurrenceDetailsWeekly._() : super._();
 
   List<DayOfWeek> get days;
 
-  /// Create a copy of RecurrenceDetails
+  /// Create a copy of RecurrenceDetailsEntity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RecurrenceDetailsWeeklyImplCopyWith<_$RecurrenceDetailsWeeklyImpl>
@@ -369,7 +372,7 @@ abstract class _$$RecurrenceDetailsEveryXDaysImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$RecurrenceDetailsEveryXDaysImplCopyWithImpl<$Res>
-    extends _$RecurrenceDetailsCopyWithImpl<$Res,
+    extends _$RecurrenceDetailsEntityCopyWithImpl<$Res,
         _$RecurrenceDetailsEveryXDaysImpl>
     implements _$$RecurrenceDetailsEveryXDaysImplCopyWith<$Res> {
   __$$RecurrenceDetailsEveryXDaysImplCopyWithImpl(
@@ -377,7 +380,7 @@ class __$$RecurrenceDetailsEveryXDaysImplCopyWithImpl<$Res>
       $Res Function(_$RecurrenceDetailsEveryXDaysImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of RecurrenceDetails
+  /// Create a copy of RecurrenceDetailsEntity
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -404,7 +407,7 @@ class _$RecurrenceDetailsEveryXDaysImpl extends _RecurrenceDetailsEveryXDays {
 
   @override
   String toString() {
-    return 'RecurrenceDetails.everyXDays(daysInterval: $daysInterval)';
+    return 'RecurrenceDetailsEntity.everyXDays(daysInterval: $daysInterval)';
   }
 
   @override
@@ -419,7 +422,7 @@ class _$RecurrenceDetailsEveryXDaysImpl extends _RecurrenceDetailsEveryXDays {
   @override
   int get hashCode => Object.hash(runtimeType, daysInterval);
 
-  /// Create a copy of RecurrenceDetails
+  /// Create a copy of RecurrenceDetailsEntity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -497,14 +500,14 @@ class _$RecurrenceDetailsEveryXDaysImpl extends _RecurrenceDetailsEveryXDays {
   }
 }
 
-abstract class _RecurrenceDetailsEveryXDays extends RecurrenceDetails {
+abstract class _RecurrenceDetailsEveryXDays extends RecurrenceDetailsEntity {
   const factory _RecurrenceDetailsEveryXDays(
       {required final int daysInterval}) = _$RecurrenceDetailsEveryXDaysImpl;
   const _RecurrenceDetailsEveryXDays._() : super._();
 
   int get daysInterval;
 
-  /// Create a copy of RecurrenceDetails
+  /// Create a copy of RecurrenceDetailsEntity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RecurrenceDetailsEveryXDaysImplCopyWith<_$RecurrenceDetailsEveryXDaysImpl>

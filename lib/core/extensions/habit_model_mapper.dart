@@ -15,16 +15,16 @@ extension HabitModelMapper on HabitModel {
     );
   }
 
-  RecurrenceDetails _mapRecurrence() {
+  RecurrenceDetailsEntity _mapRecurrence() {
     switch (recurrenceType) {
       case RecurrenceType.daily:
-        return const RecurrenceDetails.daily();
+        return const RecurrenceDetailsEntity.daily();
       case RecurrenceType.weekly:
-        return RecurrenceDetails.weekly(
+        return RecurrenceDetailsEntity.weekly(
           days: List<DayOfWeek>.from(recurrenceValue as List),
         );
       case RecurrenceType.everyXDays:
-        return RecurrenceDetails.everyXDays(
+        return RecurrenceDetailsEntity.everyXDays(
           daysInterval: recurrenceValue as int,
         );
     }
