@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit_tracker/core/dependency_injection/injection.dart';
 import 'package:habit_tracker/core/enums/day_of_week.dart';
 import 'package:habit_tracker/core/enums/recurrence_type.dart';
 import 'package:habit_tracker/core/extensions/recurrence_type_extension.dart';
 import 'package:habit_tracker/core/extensions/string_extension.dart';
 import 'package:habit_tracker/core/widgets/full_page_bottom_sheet.dart';
 import 'package:habit_tracker/features/habit/domain/entities/habit_entity.dart';
-import 'package:habit_tracker/features/habit/presentation/controller/habit_bloc.dart';
+import 'package:habit_tracker/features/habit/presentation/controller/bloc/habit_bloc.dart';
 import 'package:habit_tracker/features/habit/presentation/widgets/everxday_field.dart';
 import 'package:uuid/uuid.dart';
 
@@ -58,7 +59,7 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
         if (everyXDaysValue <= 0) everyXDaysValue = 1;
       }
 
-      final String habitId = widget.habitToEdit?.id ?? const Uuid().v4();
+      final String habitId = widget.habitToEdit?.id ??  getIt<Uuid>().v4();
       final DateTime createdAt = widget.habitToEdit?.createdAt ?? DateTime.now();
       final List<String> completionDates = List.from(widget.habitToEdit?.completionDates ?? []);
 

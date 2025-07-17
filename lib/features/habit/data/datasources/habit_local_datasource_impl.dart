@@ -1,3 +1,4 @@
+import 'package:habit_tracker/core/dependency_injection/injection.dart';
 import 'package:habit_tracker/features/habit/data/datasources/habit_local_datasource.dart';
 import 'package:habit_tracker/features/habit/data/models/habit_completion_model.dart';
 import 'package:habit_tracker/features/habit/data/models/habit_model.dart';
@@ -29,7 +30,7 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
 
   @override
   Future<void> completeHabit(String habitId, DateTime date) async {
-    final uuid = const Uuid();
+    final uuid = getIt<Uuid>();
 
     final completion = HabitCompletionModel(
       id: uuid.v4(),

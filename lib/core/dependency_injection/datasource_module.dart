@@ -4,9 +4,13 @@ import 'package:habit_tracker/features/habit/data/models/habit_completion_model.
 import 'package:habit_tracker/features/habit/data/models/habit_model.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
+import 'package:uuid/uuid.dart';
 
 @module
 abstract class DataSourceModule {
+  @lazySingleton
+  Uuid get uuid => Uuid();
+
   @lazySingleton
   HabitLocalDataSource habitLocalDataSource(Box<HabitModel> box, Box<HabitCompletionModel> completionBox) =>
       HabitLocalDataSourceImpl(box, completionBox);

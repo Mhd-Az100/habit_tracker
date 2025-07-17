@@ -40,10 +40,13 @@ import 'package:habit_tracker/features/habit/domain/usecases/get_habit_stats_use
     as _i134;
 import 'package:habit_tracker/features/habit/domain/usecases/update_habit_usecase.dart'
     as _i263;
-import 'package:habit_tracker/features/habit/presentation/controller/habit_bloc.dart'
-    as _i232;
+import 'package:habit_tracker/features/habit/presentation/controller/bloc/habit_bloc.dart'
+    as _i127;
+import 'package:habit_tracker/features/habit/presentation/controller/cubit/add_habit_cubit.dart'
+    as _i940;
 import 'package:hive/hive.dart' as _i979;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:uuid/uuid.dart' as _i706;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -57,8 +60,8 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final hiveModule = _$HiveModule();
-    final cubitModule = _$CubitModule();
     final dataSourceModule = _$DataSourceModule();
+    final cubitModule = _$CubitModule();
     await gh.singletonAsync<_i979.Box<_i830.HabitModel>>(
       () => hiveModule.habitBox,
       preResolve: true,
@@ -71,6 +74,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => hiveModule.themeBox,
       preResolve: true,
     );
+    gh.lazySingleton<_i706.Uuid>(() => dataSourceModule.uuid);
+    gh.factory<_i940.AddHabitCubit>(
+        () => _i940.AddHabitCubit(gh<_i706.Uuid>()));
     gh.lazySingleton<_i258.ThemeCubit>(
         () => cubitModule.themeCubit(gh<_i979.Box<dynamic>>()));
     gh.lazySingleton<_i880.HabitLocalDataSource>(
@@ -94,7 +100,7 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i292.DeleteHabitUseCase(gh<_i446.HabitRepository>()));
     gh.lazySingleton<_i142.GetAllHabitsUseCase>(
         () => _i142.GetAllHabitsUseCase(gh<_i446.HabitRepository>()));
-    gh.factory<_i232.HabitBloc>(() => _i232.HabitBloc(
+    gh.factory<_i127.HabitBloc>(() => _i127.HabitBloc(
           getAllHabits: gh<_i142.GetAllHabitsUseCase>(),
           addHabit: gh<_i1035.AddHabitUseCase>(),
           updateHabit: gh<_i263.UpdateHabitUseCase>(),
@@ -109,6 +115,6 @@ extension GetItInjectableX on _i174.GetIt {
 
 class _$HiveModule extends _i271.HiveModule {}
 
-class _$CubitModule extends _i353.CubitModule {}
-
 class _$DataSourceModule extends _i3.DataSourceModule {}
+
+class _$CubitModule extends _i353.CubitModule {}
