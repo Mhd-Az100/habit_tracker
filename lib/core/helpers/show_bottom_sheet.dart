@@ -7,7 +7,7 @@ void customShowBottomSheet(BuildContext context, Widget child) {
     isDismissible: false,
     enableDrag: false,
     useSafeArea: true,
-    backgroundColor: Colors.white,
+    backgroundColor: Theme.of(context).colorScheme.surface,
     clipBehavior: Clip.antiAlias,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
