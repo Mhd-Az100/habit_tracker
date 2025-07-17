@@ -4,7 +4,7 @@ import 'package:habit_tracker/core/enums/day_of_week.dart';
 import 'package:habit_tracker/core/enums/recurrence_type.dart';
 import 'package:habit_tracker/core/extensions/date_time_extension.dart';
 import 'package:habit_tracker/core/extensions/string_extension.dart';
-import 'package:habit_tracker/core/helpers/show_bottom_sheet.dart';
+import 'package:habit_tracker/core/helpers/custom_show_bottom_sheet.dart';
 import 'package:habit_tracker/core/widgets/full_page_bottom_sheet.dart';
 import 'package:habit_tracker/features/habit/domain/entities/habit_entity.dart';
 import 'package:habit_tracker/features/habit/presentation/controller/habit_bloc.dart';
