@@ -29,11 +29,11 @@ class DeleteModeHeader extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: onCancel,
-                icon: const Icon(Icons.close),
+                icon: const Icon(Icons.close, color: Colors.black87),
               ),
               Text(
                 '$selectedCount selected',
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold, color: Colors.black87),
               ),
               const Spacer(),
               IconButton(
