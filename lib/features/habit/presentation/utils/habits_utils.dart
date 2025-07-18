@@ -1,10 +1,10 @@
-// Function to check if a habit is due on a specific day
 import 'package:habit_tracker/core/enums/day_completion_status.dart';
 import 'package:habit_tracker/core/enums/recurrence_type.dart';
 import 'package:habit_tracker/core/extensions/date_time_extension.dart';
 import 'package:habit_tracker/features/habit/domain/entities/habit_entity.dart';
 
 class HabitsUtils {
+  /// Returns true if the habit is due on the given day.
   static bool isHabitDueOnDay(HabitEntity habit, DateTime day) {
     final normalizedDay = day.toNormalizedDateTime();
     final normalizedCreatedAt = habit.createdAt.toNormalizedDateTime();
@@ -27,7 +27,9 @@ class HabitsUtils {
     }
   }
 
-  // Function to get overall day status for calendar markers
+  /// Returns the overall completion status for a given day.
+  /// The status is determined by counting the number of habits that are due
+  /// on the given day and the number of habits that have been completed.
   static DayCompletionStatus getOverallDayStatus(
       DateTime day, List<HabitEntity> allHabits) {
     final normalizedToday = DateTime.now().toNormalizedDateTime();
