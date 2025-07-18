@@ -73,7 +73,7 @@ class AddHabitCubit extends Cubit<AddHabitFormState> {
           ? state.daysOfWeek
           : null,
       everyXDays: everyX,
-      createdAt: isEditing ? originalHabit!.createdAt : DateTime.now(),
+      createdAt: isEditing ? originalHabit!.createdAt : DateTime.now().subtract(Duration(days: 1)), //TODO revert this
       completionDates: isEditing
           ? List.from(originalHabit!.completionDates)
           : [],

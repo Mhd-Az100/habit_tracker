@@ -23,7 +23,7 @@ class HabitsScreen extends StatelessWidget {
           ),
           BlocBuilder<DatePickerCubit, DatePickerState>(
             builder: (context, state) {
-              return HabitListView(selectedDate: state.selectedDate,);
+              return HabitListView(selectedDate: state.selectedDate);
             },
           ),
         ],

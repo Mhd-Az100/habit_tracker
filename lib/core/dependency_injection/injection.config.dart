@@ -44,6 +44,8 @@ import 'package:habit_tracker/features/habit/presentation/controller/add_cubit/a
     as _i632;
 import 'package:habit_tracker/features/habit/presentation/controller/bloc/habit_bloc.dart'
     as _i127;
+import 'package:habit_tracker/features/habit/presentation/controller/calendar_cubit/calendar_cubit.dart'
+    as _i367;
 import 'package:habit_tracker/features/habit/presentation/controller/datepicker_cubit/datepicker_cubit.dart'
     as _i884;
 import 'package:habit_tracker/features/habit/presentation/controller/delete_cubit/delete_habit_cubit.dart'
@@ -115,6 +117,8 @@ extension GetItInjectableX on _i174.GetIt {
           completeHabit: gh<_i941.CompleteHabitUseCase>(),
           getHabitStats: gh<_i134.GetHabitStatsUseCase>(),
         ));
+    gh.factory<_i367.CalendarCubit>(
+        () => _i367.CalendarCubit(habitBloc: gh<_i127.HabitBloc>()));
     return this;
   }
 }

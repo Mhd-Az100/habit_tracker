@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/core/dependency_injection/injection.dart';
 import 'package:habit_tracker/core/theme/theme_cubit.dart';
-import 'package:habit_tracker/features/habit/presentation/screens/calendar_screen.dart';
 import 'package:habit_tracker/features/habit/presentation/controller/bloc/habit_bloc.dart';
+import 'package:habit_tracker/features/habit/presentation/controller/calendar_cubit/calendar_cubit.dart';
 import 'package:habit_tracker/features/habit/presentation/controller/datepicker_cubit/datepicker_cubit.dart';
 import 'package:habit_tracker/features/habit/presentation/controller/delete_cubit/delete_habit_cubit.dart';
+import 'package:habit_tracker/features/habit/presentation/screens/calendar_screen.dart';
 import 'package:habit_tracker/features/habit/presentation/screens/habits_screen.dart';
 
 class HomeScaffold extends StatefulWidget {
@@ -38,6 +39,9 @@ class _HomeScaffoldState extends State<HomeScaffold> {
         ),
         BlocProvider<DatePickerCubit>(
           create: (_) => getIt<DatePickerCubit>(),
+        ),
+        BlocProvider<CalendarCubit>(
+          create: (_) => getIt<CalendarCubit>(),
         ),
       ],
       child: Scaffold(
