@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/core/dependency_injection/injection.dart';
+import 'package:habit_tracker/core/helpers/app_bloc_observer.dart';
 import 'package:habit_tracker/core/hive/hive_config.dart';
 import 'package:habit_tracker/core/theme/theme.dart';
 import 'package:habit_tracker/core/theme/theme_cubit.dart';
@@ -12,7 +13,8 @@ Future<void> main() async {
   await HiveConfig.init();
   await configureDependencies();  
   final themeCubit = getIt<ThemeCubit>();
-
+  Bloc.observer = AppBlocObserver();
+  
   runApp(BlocProvider.value(
       value: themeCubit,
       child: MainApp(),
