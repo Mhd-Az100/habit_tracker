@@ -24,7 +24,6 @@ class AddHabitSheet extends StatelessWidget {
   }
 }
 
-
 class _AddHabitForm extends StatelessWidget {
   const _AddHabitForm();
 
@@ -39,72 +38,89 @@ class _AddHabitForm extends StatelessWidget {
           title: cubit.isEditing ? 'Edit Habit' : 'Add New Habit',
           child: Form(
             key: formKey,
-            child: ListView(
-              padding: const EdgeInsets.all(16),
+            child: Column(
               children: [
-                TextFormField(
-                  controller: cubit.nameController,
-                  decoration: const InputDecoration(labelText: 'Habit Name'),
-                  onChanged: cubit.onNameChanged,
-                  validator: (value) => value == null || value.trim().isEmpty
-                      ? 'Name is required'
-                      : null,
-                ),
-                const SizedBox(height: 12),
-                TextFormField(
-                  controller: cubit.descriptionController,
-                  decoration: const InputDecoration(labelText: 'Description'),
-                  maxLines: 3,
-                  onChanged: cubit.onDescriptionChanged,
-                ),
-                const SizedBox(height: 16),
-                Text('Repeat:', style: Theme.of(context).textTheme.titleMedium),
-                const SizedBox(height: 8),
-                Wrap(
-                  spacing: 8.0,
-                  children: RecurrenceType.values.map((type) {
-                    return ChoiceChip(
-                      onSelected: (_) => cubit.onRecurrenceChanged(type),
-                      label: Text(type.translate()),
-                      selected: state.recurrenceType == type,
-                    );
-                  }).toList(),
-                ),
-
-                if (state.recurrenceType == RecurrenceType.weekly) ...[
-                  const SizedBox(height: 16),
-                  Text('Days of Week:', style: Theme.of(context).textTheme.titleMedium),
-                  const SizedBox(height: 8),
-                  Wrap(
-                    spacing: 8.0,
-                    children: List.generate(7, (index) {
-                      final dayOfWeek = DayOfWeek.values[index];
-                      final isSelected = state.daysOfWeek.contains(index);
-
-                      return FilterChip(
-                        label: Text(dayOfWeek.name.capitalize()),
-                        selected: isSelected,
-                        onSelected: (_) => cubit.toggleDay(index),
-                      );
-                    }),
+                Expanded(
+                  child: ListView(
+                    padding: const EdgeInsets.all(16),
+                    children: [
+                      TextFormField(
+                        controller: cubit.nameController,
+                        decoration: const InputDecoration(
+                          labelText: 'Habit Name',
+                        ),
+                        onChanged: cubit.onNameChanged,
+                        validator: (value) =>
+                            value == null || value.trim().isEmpty
+                            ? 'Name is required'
+                            : null,
+                      ),
+                      const SizedBox(height: 12),
+                      TextFormField(
+                        controller: cubit.descriptionController,
+                        decoration: const InputDecoration(
+                          labelText: 'Description',
+                        ),
+                        maxLines: 3,
+                        onChanged: cubit.onDescriptionChanged,
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        'Repeat:',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      const SizedBox(height: 8),
+                      Wrap(
+                        spacing: 8.0,
+                        children: RecurrenceType.values.map((type) {
+                          return ChoiceChip(
+                            onSelected: (_) => cubit.onRecurrenceChanged(type),
+                            label: Text(type.translate()),
+                            selected: state.recurrenceType == type,
+                          );
+                        }).toList(),
+                      ),
+                  
+                      if (state.recurrenceType == RecurrenceType.weekly) ...[
+                        const SizedBox(height: 16),
+                        Text(
+                          'Days of Week:',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        const SizedBox(height: 8),
+                        Wrap(
+                          spacing: 8.0,
+                          children: List.generate(7, (index) {
+                            final dayOfWeek = DayOfWeek.values[index];
+                            final isSelected = state.daysOfWeek.contains(index);
+                  
+                            return FilterChip(
+                              label: Text(dayOfWeek.name.capitalize()),
+                              selected: isSelected,
+                              onSelected: (_) => cubit.toggleDay(index),
+                            );
+                          }),
+                        ),
+                      ],
+                  
+                      if (state.recurrenceType == RecurrenceType.everyXDays) ...[
+                        const SizedBox(height: 12),
+                        EveryXDaysField(controller: cubit.everyXDaysController),
+                      ],
+                    ],
                   ),
-                ],
-
-                if (state.recurrenceType == RecurrenceType.everyXDays) ...[
-                  const SizedBox(height: 12),
-                  EveryXDaysField(controller: cubit.everyXDaysController),
-                ],
-
-                const SizedBox(height: 24),
+                ),
                 SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(
+                  child: FilledButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         cubit.submitForm(context);
                       }
                     },
-                    child: Text(cubit.isEditing ? 'Update Habit' : 'Save Habit'),
+                    child: Text(
+                      cubit.isEditing ? 'Update Habit' : 'Save Habit',
+                    ),
                   ),
                 ),
               ],

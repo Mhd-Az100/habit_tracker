@@ -25,17 +25,21 @@ class HabitCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final Color cardColor = isSelectedForDeletion
         ? Theme.of(context).colorScheme.error.withAlpha(51)
-        : Theme.of(context).colorScheme.surfaceBright;
+        : Theme.of(context).colorScheme.surfaceContainerHigh;
 
     return Card(
       color: cardColor,
-      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
       child: InkWell(
         onTap: onTap,
         onLongPress: onLongPress,
         splashFactory: isSelectedForDeletion ? InkRipple.splashFactory : null,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: Row(
             children: [
               Expanded(
@@ -44,7 +48,7 @@ class HabitCard extends StatelessWidget {
                   children: [
                     Text(
                       habit.name,
-                      style: Theme.of(context).textTheme.titleLarge,
+                      style: Theme.of(context).textTheme.titleMedium,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),

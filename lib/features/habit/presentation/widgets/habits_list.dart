@@ -60,7 +60,6 @@ class _HabitListViewState extends State<HabitListView> {
           error: (errorState) => SliverToBoxAdapter(
             child: Center(child: Text("Error: ${errorState.message}")),
           ),
-          statsLoaded: (_) => const SliverToBoxAdapter(child: SizedBox.shrink()),
           loaded: (loadedState) {
             final filteredHabits = loadedState.habitsOfDay; 
 
