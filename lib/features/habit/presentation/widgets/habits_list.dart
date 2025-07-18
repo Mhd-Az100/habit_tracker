@@ -9,8 +9,7 @@ import 'package:habit_tracker/features/habit/presentation/controller/delete_cubi
 import 'package:habit_tracker/features/habit/presentation/widgets/delete_mode_widget.dart';
 import 'package:habit_tracker/features/habit/presentation/widgets/habit_details.dart';
 
-
-class HabitListView extends StatefulWidget { 
+class HabitListView extends StatefulWidget {
   final DateTime? selectedDate;
 
   const HabitListView({super.key, this.selectedDate});
@@ -32,16 +31,19 @@ class _HabitListViewState extends State<HabitListView> {
 
   @override
   Widget build(BuildContext context) {
-    final normalizedDate = (widget.selectedDate ?? DateTime.now()).toNormalizedDateString();
+    final normalizedDate = (widget.selectedDate ?? DateTime.now())
+        .toNormalizedDateString();
 
     return BlocConsumer<HabitBloc, HabitState>(
       listener: (context, state) {
         state.whenOrNull(
           error: (message) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $message')));
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text('Error: $message')));
           },
-          loaded: (allHabits, habitsOfDay, selectedDate) { 
-            final habitIds = allHabits.map((h) => h.id).toSet(); 
+          loaded: (allHabits, habitsOfDay, selectedDate) {
+            final habitIds = allHabits.map((h) => h.id).toSet();
             final deleteCubit = context.read<HabitDeleteCubit>();
             final current = List<String>.from(deleteCubit.state.selectedIds);
             current.removeWhere((id) => !habitIds.contains(id));
@@ -61,7 +63,7 @@ class _HabitListViewState extends State<HabitListView> {
             child: Center(child: Text("Error: ${errorState.message}")),
           ),
           loaded: (loadedState) {
-            final filteredHabits = loadedState.habitsOfDay; 
+            final filteredHabits = loadedState.habitsOfDay;
 
             if (filteredHabits.isEmpty) {
               return SliverToBoxAdapter(
@@ -69,22 +71,33 @@ class _HabitListViewState extends State<HabitListView> {
               );
             }
 
-            return _buildHabitList(context, filteredHabits, loadedState.selectedDate, normalizedDate);
+            return _buildHabitList(
+              context,
+              filteredHabits,
+              loadedState.selectedDate,
+              normalizedDate,
+            );
           },
         );
       },
     );
   }
 
-  Widget _buildHabitList(BuildContext context, List<HabitEntity> habits, DateTime selectedDate, String normalizedDate) {
+  Widget _buildHabitList(
+    BuildContext context,
+    List<HabitEntity> habits,
+    DateTime selectedDate,
+    String normalizedDate,
+  ) {
     return BlocBuilder<HabitDeleteCubit, HabitDeleteState>(
       builder: (context, deleteState) {
-        return SliverToBoxAdapter( 
+        return SliverToBoxAdapter(
           child: Column(
             children: [
               if (deleteState.isDeleteMode)
                 DeleteModeHeader(
-                  onCancel: () => context.read<HabitDeleteCubit>().exitDeleteMode(),
+                  onCancel: () =>
+                      context.read<HabitDeleteCubit>().exitDeleteMode(),
                   onDelete: () {
                     showDialog(
                       context: context,
@@ -101,14 +114,20 @@ class _HabitListViewState extends State<HabitListView> {
                           ElevatedButton(
                             onPressed: () {
                               for (final id in deleteState.selectedIds) {
-                                context.read<HabitBloc>().add(HabitEvent.deleteHabit(id));
+                                context.read<HabitBloc>().add(
+                                  HabitEvent.deleteHabit(id),
+                                );
                               }
                               context.read<HabitDeleteCubit>().exitDeleteMode();
                               Navigator.of(ctx).pop();
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Theme.of(context).colorScheme.error,
-                              foregroundColor: Theme.of(context).colorScheme.onError,
+                              backgroundColor: Theme.of(
+                                context,
+                              ).colorScheme.error,
+                              foregroundColor: Theme.of(
+                                context,
+                              ).colorScheme.onError,
                             ),
                             child: const Text('Delete'),
                           ),
@@ -123,18 +142,24 @@ class _HabitListViewState extends State<HabitListView> {
                 itemCount: habits.length,
                 itemBuilder: (context, index) {
                   final habit = habits[index];
-                  final isCompleted = habit.completionDates.contains(normalizedDate);
+                  final isCompleted = habit.completionDates.contains(
+                    normalizedDate,
+                  );
                   final isSelected = deleteState.selectedIds.contains(habit.id);
 
-                  final bool isFutureDate = selectedDate.toNormalizedDateTime().isAfter(DateTime.now().toNormalizedDateTime());
+                  final bool isFutureDate = selectedDate
+                      .toNormalizedDateTime()
+                      .isAfter(DateTime.now().toNormalizedDateTime());
 
                   return HabitCard(
-                    hideCheckbox: deleteState.isDeleteMode || isFutureDate,
                     habit: habit,
                     isCompletedToday: isCompleted,
-                    isSelectedForDeletion: deleteState.isDeleteMode && isSelected,
+                    isSelectedForDeletion:
+                        deleteState.isDeleteMode && isSelected,
                     onTap: deleteState.isDeleteMode
-                        ? () => context.read<HabitDeleteCubit>().toggleSelection(habit.id)
+                        ? () => context
+                              .read<HabitDeleteCubit>()
+                              .toggleSelection(habit.id)
                         : () {
                             customShowBottomSheet(
                               context,
@@ -146,11 +171,16 @@ class _HabitListViewState extends State<HabitListView> {
                           },
                     onLongPress: () {
                       context.read<HabitDeleteCubit>().enterDeleteMode();
-                      context.read<HabitDeleteCubit>().toggleSelection(habit.id);
+                      context.read<HabitDeleteCubit>().toggleSelection(
+                        habit.id,
+                      );
                     },
-                    onCheckboxChanged: (_) => context.read<HabitBloc>().add(
-                              HabitEvent.completeHabit(habit.id, selectedDate),
-                            ),
+                    onCheckboxChanged:
+                        (isFutureDate || deleteState.isDeleteMode)
+                        ? null
+                        : (_) => context.read<HabitBloc>().add(
+                            HabitEvent.completeHabit(habit.id, selectedDate),
+                          ),
                   );
                 },
               ),
@@ -161,4 +191,3 @@ class _HabitListViewState extends State<HabitListView> {
     );
   }
 }
-

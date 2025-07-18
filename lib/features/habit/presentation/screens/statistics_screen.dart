@@ -53,7 +53,7 @@ class StatisticsScreen extends StatelessWidget {
             }
 
             return SingleChildScrollView(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -195,7 +195,8 @@ class StatisticsScreen extends StatelessWidget {
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 800),
                     curve: Curves.easeOutCubic,
-                    width: MediaQuery.of(context).size.width * 0.85 * progress - 40,
+                    width: (MediaQuery.of(context).size.width * 0.85 * progress - 40)
+                        .clamp(double.minPositive, double.infinity),
                     height: 6,
                     decoration: BoxDecoration(
                       color: color,

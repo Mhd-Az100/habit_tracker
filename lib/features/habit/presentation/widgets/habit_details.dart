@@ -294,7 +294,7 @@ class HabitDetailSheet extends StatelessWidget {
             ),
             child: const Text('Cancel'),
           ),
-          ElevatedButton(
+          FilledButton(
             onPressed: () {
               Navigator.of(ctx).pop();
               Navigator.of(context).pop();
@@ -303,9 +303,6 @@ class HabitDetailSheet extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               backgroundColor: colorScheme.error,
               foregroundColor: colorScheme.onError,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
             ),
             child: const Text('Delete'),
           ),

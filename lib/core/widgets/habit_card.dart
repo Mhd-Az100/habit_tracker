@@ -8,7 +8,6 @@ class HabitCard extends StatelessWidget {
   final ValueChanged<bool?>? onCheckboxChanged;
   final bool isCompletedToday;
   final bool isSelectedForDeletion;
-  final bool hideCheckbox;
 
   const HabitCard({
     super.key,
@@ -18,7 +17,6 @@ class HabitCard extends StatelessWidget {
     this.onCheckboxChanged,
     required this.isCompletedToday,
     this.isSelectedForDeletion = false,
-    this.hideCheckbox = false,
   });
 
   @override
@@ -30,9 +28,7 @@ class HabitCard extends StatelessWidget {
     return Card(
       color: cardColor,
       elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
       margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
       child: InkWell(
         onTap: onTap,
@@ -72,13 +68,10 @@ class HabitCard extends StatelessWidget {
                       value: isSelectedForDeletion,
                       onChanged: onCheckboxChanged,
                     )
-                  : Visibility(
-                    visible: !hideCheckbox,
-                    child: Checkbox(
-                        value: isCompletedToday,
-                        onChanged: onCheckboxChanged,
-                      ),
-                  ),
+                  : Checkbox(
+                      value: isCompletedToday,
+                      onChanged: onCheckboxChanged,
+                    ),
             ],
           ),
         ),
