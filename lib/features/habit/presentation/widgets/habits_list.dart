@@ -67,7 +67,13 @@ class _HabitListViewState extends State<HabitListView> {
 
             if (filteredHabits.isEmpty) {
               return SliverToBoxAdapter(
-                child: Center(child: Text("No habits for $normalizedDate.")),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      child: Center(child: Text("No habits for $normalizedDate.", style: Theme.of(context).textTheme.titleMedium,))),
+                  ],
+                ),
               );
             }
 
