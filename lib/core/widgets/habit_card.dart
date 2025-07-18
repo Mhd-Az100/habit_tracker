@@ -25,7 +25,7 @@ class HabitCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final Color cardColor = isSelectedForDeletion
         ? Theme.of(context).colorScheme.error.withAlpha(51)
-        : Theme.of(context).cardColor;
+        : Theme.of(context).colorScheme.surfaceBright;
 
     return Card(
       color: cardColor,
