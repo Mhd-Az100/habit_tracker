@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/core/dependency_injection/injection.dart';
 import 'package:habit_tracker/core/helpers/app_bloc_observer.dart';
@@ -14,7 +15,11 @@ Future<void> main() async {
   await configureDependencies();  
   final themeCubit = getIt<ThemeCubit>();
   Bloc.observer = AppBlocObserver();
-  
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   runApp(BlocProvider.value(
       value: themeCubit,
       child: MainApp(),
