@@ -6,8 +6,10 @@ import 'package:habit_tracker/features/habit/presentation/controller/bloc/habit_
 import 'package:habit_tracker/features/habit/presentation/controller/calendar_cubit/calendar_cubit.dart';
 import 'package:habit_tracker/features/habit/presentation/controller/datepicker_cubit/datepicker_cubit.dart';
 import 'package:habit_tracker/features/habit/presentation/controller/delete_cubit/delete_habit_cubit.dart';
+import 'package:habit_tracker/features/habit/presentation/controller/statistics_cubit/statistics_cubit.dart';
 import 'package:habit_tracker/features/habit/presentation/screens/calendar_screen.dart';
 import 'package:habit_tracker/features/habit/presentation/screens/habits_screen.dart';
+import 'package:habit_tracker/features/habit/presentation/screens/statistics_screen.dart';
 
 class HomeScaffold extends StatefulWidget {
   const HomeScaffold({super.key});
@@ -22,7 +24,7 @@ class _HomeScaffoldState extends State<HomeScaffold> {
   final List<Widget> _pages = const [
     HabitsScreen(),
     CalendarScreen(),
-    Placeholder(), // StatisticsPage() later
+    StatisticsScreen(),
   ];
 
   final List<String> _pageTitles = const ['Habits', 'Calendar', 'Statistics'];
@@ -42,6 +44,9 @@ class _HomeScaffoldState extends State<HomeScaffold> {
         ),
         BlocProvider<CalendarCubit>(
           create: (_) => getIt<CalendarCubit>(),
+        ),
+        BlocProvider<StatisticsCubit>(
+          create: (_) => getIt<StatisticsCubit>(),
         ),
       ],
       child: Scaffold(

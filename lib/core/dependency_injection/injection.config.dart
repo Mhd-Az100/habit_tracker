@@ -50,6 +50,8 @@ import 'package:habit_tracker/features/habit/presentation/controller/datepicker_
     as _i884;
 import 'package:habit_tracker/features/habit/presentation/controller/delete_cubit/delete_habit_cubit.dart'
     as _i1056;
+import 'package:habit_tracker/features/habit/presentation/controller/statistics_cubit/statistics_cubit.dart'
+    as _i32;
 import 'package:hive/hive.dart' as _i979;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:uuid/uuid.dart' as _i706;
@@ -68,6 +70,7 @@ extension GetItInjectableX on _i174.GetIt {
     final hiveModule = _$HiveModule();
     final dataSourceModule = _$DataSourceModule();
     final cubitModule = _$CubitModule();
+    gh.factory<_i134.GetHabitStatsUseCase>(() => _i134.GetHabitStatsUseCase());
     gh.factory<_i1056.HabitDeleteCubit>(() => _i1056.HabitDeleteCubit());
     gh.factory<_i884.DatePickerCubit>(() => _i884.DatePickerCubit());
     await gh.singletonAsync<_i979.Box<_i830.HabitModel>>(
@@ -96,8 +99,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i856.HabitRepositoryImpl(gh<_i880.HabitLocalDataSource>()));
     gh.lazySingleton<_i941.CompleteHabitUseCase>(
         () => _i941.CompleteHabitUseCase(gh<_i446.HabitRepository>()));
-    gh.lazySingleton<_i134.GetHabitStatsUseCase>(
-        () => _i134.GetHabitStatsUseCase(gh<_i446.HabitRepository>()));
     gh.lazySingleton<_i263.UpdateHabitUseCase>(
         () => _i263.UpdateHabitUseCase(gh<_i446.HabitRepository>()));
     gh.lazySingleton<_i1035.AddHabitUseCase>(
@@ -116,6 +117,10 @@ extension GetItInjectableX on _i174.GetIt {
           getHabitById: gh<_i808.GetHabitByIdUseCase>(),
           completeHabit: gh<_i941.CompleteHabitUseCase>(),
           getHabitStats: gh<_i134.GetHabitStatsUseCase>(),
+        ));
+    gh.factory<_i32.StatisticsCubit>(() => _i32.StatisticsCubit(
+          habitBloc: gh<_i127.HabitBloc>(),
+          getHabitStatsUseCase: gh<_i134.GetHabitStatsUseCase>(),
         ));
     gh.factory<_i367.CalendarCubit>(
         () => _i367.CalendarCubit(habitBloc: gh<_i127.HabitBloc>()));

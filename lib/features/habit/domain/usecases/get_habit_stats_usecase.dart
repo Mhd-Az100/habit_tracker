@@ -1,55 +1,64 @@
-import 'package:habit_tracker/features/habit/domain/entities/habit_stats_entity.dart';
-import 'package:habit_tracker/features/habit/domain/repositories/habit_repository.dart';
+import 'package:habit_tracker/core/extensions/date_time_extension.dart';
+import 'package:habit_tracker/features/habit/data/models/overall_habit_statistics.dart';
+import 'package:habit_tracker/features/habit/domain/entities/habit_entity.dart';
+import 'package:habit_tracker/features/habit/presentation/utils/habits_utils.dart';
 import 'package:injectable/injectable.dart';
 
-@lazySingleton
+@injectable
 class GetHabitStatsUseCase {
-  final HabitRepository _repository;
+  @factoryMethod
+  OverallHabitStatisticsModel call(List<HabitEntity> allHabits) {
+    final now = DateTime.now().toNormalizedDateTime();
+    // Calculate start of the last 7 days (including today)
+    final sevenDaysAgo = now.subtract(const Duration(days: 6));
+    // Calculate start of the last 30 days (including today)
+    final thirtyDaysAgo = now.subtract(const Duration(days: 29));
 
-  GetHabitStatsUseCase(this._repository);
+    int totalHabitsDueOverall = 0;
+    int totalHabitsCompletedOverall = 0;
+    final Set<DateTime> distinctCompletedDaysLast7 = {};
+    final Set<DateTime> distinctCompletedDaysLast30 = {};
 
-  Future<HabitStatsEntity> call(String habitId) async {
-    final completions = await _repository.getCompletionsForHabit(habitId);
+    for (var habit in allHabits) {
+      // Calculate overall completion for each habit from its creation date to today
+      DateTime currentDay = habit.createdAt.toNormalizedDateTime();
+      while (!currentDay.isAfter(now)) {
+        if (HabitsUtils.isHabitDueOnDay(habit, currentDay)) {
+          totalHabitsDueOverall++;
+          if (habit.completionDates.contains(currentDay.toNormalizedDateString())) {
+            totalHabitsCompletedOverall++;
+          }
+        }
+        currentDay = currentDay.add(const Duration(days: 1));
+      }
 
-    if (completions.isEmpty) {
-      return HabitStatsEntity(
-        totalCompletions: 0,
-        currentStreak: 0,
-        longestStreak: 0,
-      );
-    }
+      // Populate distinct completed days for last 7/30
+      for (var completionDateString in habit.completionDates) {
+        final completedDay = DateTime.parse(completionDateString).toNormalizedDateTime();
 
-    final sorted = completions.map((e) => e.date).toList()..sort();
+        // Check if the completed day is within the last 7 days range (inclusive)
+        if ((completedDay.isAfter(sevenDaysAgo) || completedDay.isAtSameMomentAs(sevenDaysAgo)) &&
+            (completedDay.isBefore(now) || completedDay.isAtSameMomentAs(now))) {
+          distinctCompletedDaysLast7.add(completedDay);
+        }
 
-    int total = sorted.length;
-    int currentStreak = 1;
-    int longestStreak = 1;
-
-    for (int i = sorted.length - 2; i >= 0; i--) {
-      final current = sorted[i];
-      final next = sorted[i + 1];
-
-      if (next.difference(current).inDays == 1) {
-        currentStreak++;
-      } else {
-        break;
+        // Check if the completed day is within the last 30 days range (inclusive)
+        if ((completedDay.isAfter(thirtyDaysAgo) || completedDay.isAtSameMomentAs(thirtyDaysAgo)) &&
+            (completedDay.isBefore(now) || completedDay.isAtSameMomentAs(now))) {
+          distinctCompletedDaysLast30.add(completedDay);
+        }
       }
     }
 
-    int streak = 1;
-    for (int i = 1; i < sorted.length; i++) {
-      if (sorted[i].difference(sorted[i - 1]).inDays == 1) {
-        streak++;
-        if (streak > longestStreak) longestStreak = streak;
-      } else {
-        streak = 1;
-      }
-    }
+    // Calculate completion rate
+    final double completionRate = totalHabitsDueOverall > 0
+        ? (totalHabitsCompletedOverall / totalHabitsDueOverall) * 100
+        : 0.0;
 
-    return HabitStatsEntity(
-      totalCompletions: total,
-      currentStreak: currentStreak,
-      longestStreak: longestStreak,
+    return OverallHabitStatisticsModel(
+      completionRate: double.parse(completionRate.toStringAsFixed(2)),
+      daysCompletedLast7Days: distinctCompletedDaysLast7.length,
+      daysCompletedLast30Days: distinctCompletedDaysLast30.length,
     );
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:habit_tracker/core/extensions/date_time_extension.dart';
 import 'package:habit_tracker/features/habit/domain/entities/habit_entity.dart';
-import 'package:habit_tracker/features/habit/domain/entities/habit_stats_entity.dart';
 import 'package:habit_tracker/features/habit/domain/usecases/add_habit_usecase.dart';
 import 'package:habit_tracker/features/habit/domain/usecases/complete_habit_usecase.dart';
 import 'package:habit_tracker/features/habit/domain/usecases/delete_habit_usecase.dart';
@@ -95,16 +94,6 @@ class HabitBloc extends Bloc<HabitEvent, HabitState> {
       );
     });
 
-    on<_GetHabitState>((event, emit) async {
-      emit(HabitState.loading());
-      try {
-        final stats = await getHabitStats(event.habitId);
-        emit(HabitState.statsLoaded(stats));
-      } catch (e) {
-        emit(HabitState.error('Failed to load stats: ${e.toString()}'));
-      }
-    });
-
     on<_FilterHabitsByDate>((event, emit) {
       final currentAllHabits =
           state.whenOrNull(loaded: (all, _, __) => all) ?? [];
@@ -127,8 +116,6 @@ class HabitBloc extends Bloc<HabitEvent, HabitState> {
       initial: () => DateTime.now().toNormalizedDateTime(),
       loading: () => DateTime.now().toNormalizedDateTime(),
       loaded: (_, __, selectedDate) => selectedDate,
-      statsLoaded: (_) =>
-          DateTime.now().toNormalizedDateTime(), 
       error: (_) => DateTime.now().toNormalizedDateTime(), 
     );
   }

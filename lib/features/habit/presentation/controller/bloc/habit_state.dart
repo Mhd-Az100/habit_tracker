@@ -9,7 +9,5 @@ class HabitState with _$HabitState {
     required List<HabitEntity> habitsOfDay,
     required DateTime selectedDate,
   }) = _Loaded;
-  const factory HabitState.statsLoaded(HabitStatsEntity stats) =
-      _StatsLoaded;
   const factory HabitState.error(String message) = _Error;
 }

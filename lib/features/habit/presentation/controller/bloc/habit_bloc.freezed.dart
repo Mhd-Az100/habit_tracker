@@ -25,7 +25,6 @@ mixin _$HabitEvent {
     required TResult Function(String id) deleteHabit,
     required TResult Function(String id) getHabitById,
     required TResult Function(String habitId, DateTime date) completeHabit,
-    required TResult Function(String habitId) getHabitState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +36,6 @@ mixin _$HabitEvent {
     TResult? Function(String id)? deleteHabit,
     TResult? Function(String id)? getHabitById,
     TResult? Function(String habitId, DateTime date)? completeHabit,
-    TResult? Function(String habitId)? getHabitState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,7 +47,6 @@ mixin _$HabitEvent {
     TResult Function(String id)? deleteHabit,
     TResult Function(String id)? getHabitById,
     TResult Function(String habitId, DateTime date)? completeHabit,
-    TResult Function(String habitId)? getHabitState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +59,6 @@ mixin _$HabitEvent {
     required TResult Function(_DeleteHabit value) deleteHabit,
     required TResult Function(_GetHabitById value) getHabitById,
     required TResult Function(_CompleteHabit value) completeHabit,
-    required TResult Function(_GetHabitState value) getHabitState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,7 +70,6 @@ mixin _$HabitEvent {
     TResult? Function(_DeleteHabit value)? deleteHabit,
     TResult? Function(_GetHabitById value)? getHabitById,
     TResult? Function(_CompleteHabit value)? completeHabit,
-    TResult? Function(_GetHabitState value)? getHabitState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,7 +81,6 @@ mixin _$HabitEvent {
     TResult Function(_DeleteHabit value)? deleteHabit,
     TResult Function(_GetHabitById value)? getHabitById,
     TResult Function(_CompleteHabit value)? completeHabit,
-    TResult Function(_GetHabitState value)? getHabitState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -161,7 +155,6 @@ class _$LoadHabitsImpl implements _LoadHabits {
     required TResult Function(String id) deleteHabit,
     required TResult Function(String id) getHabitById,
     required TResult Function(String habitId, DateTime date) completeHabit,
-    required TResult Function(String habitId) getHabitState,
   }) {
     return loadHabits();
   }
@@ -176,7 +169,6 @@ class _$LoadHabitsImpl implements _LoadHabits {
     TResult? Function(String id)? deleteHabit,
     TResult? Function(String id)? getHabitById,
     TResult? Function(String habitId, DateTime date)? completeHabit,
-    TResult? Function(String habitId)? getHabitState,
   }) {
     return loadHabits?.call();
   }
@@ -191,7 +183,6 @@ class _$LoadHabitsImpl implements _LoadHabits {
     TResult Function(String id)? deleteHabit,
     TResult Function(String id)? getHabitById,
     TResult Function(String habitId, DateTime date)? completeHabit,
-    TResult Function(String habitId)? getHabitState,
     required TResult orElse(),
   }) {
     if (loadHabits != null) {
@@ -210,7 +201,6 @@ class _$LoadHabitsImpl implements _LoadHabits {
     required TResult Function(_DeleteHabit value) deleteHabit,
     required TResult Function(_GetHabitById value) getHabitById,
     required TResult Function(_CompleteHabit value) completeHabit,
-    required TResult Function(_GetHabitState value) getHabitState,
   }) {
     return loadHabits(this);
   }
@@ -225,7 +215,6 @@ class _$LoadHabitsImpl implements _LoadHabits {
     TResult? Function(_DeleteHabit value)? deleteHabit,
     TResult? Function(_GetHabitById value)? getHabitById,
     TResult? Function(_CompleteHabit value)? completeHabit,
-    TResult? Function(_GetHabitState value)? getHabitState,
   }) {
     return loadHabits?.call(this);
   }
@@ -240,7 +229,6 @@ class _$LoadHabitsImpl implements _LoadHabits {
     TResult Function(_DeleteHabit value)? deleteHabit,
     TResult Function(_GetHabitById value)? getHabitById,
     TResult Function(_CompleteHabit value)? completeHabit,
-    TResult Function(_GetHabitState value)? getHabitState,
     required TResult orElse(),
   }) {
     if (loadHabits != null) {
@@ -330,7 +318,6 @@ class _$FilterHabitsByDateImpl implements _FilterHabitsByDate {
     required TResult Function(String id) deleteHabit,
     required TResult Function(String id) getHabitById,
     required TResult Function(String habitId, DateTime date) completeHabit,
-    required TResult Function(String habitId) getHabitState,
   }) {
     return filterHabitsByDate(date);
   }
@@ -345,7 +332,6 @@ class _$FilterHabitsByDateImpl implements _FilterHabitsByDate {
     TResult? Function(String id)? deleteHabit,
     TResult? Function(String id)? getHabitById,
     TResult? Function(String habitId, DateTime date)? completeHabit,
-    TResult? Function(String habitId)? getHabitState,
   }) {
     return filterHabitsByDate?.call(date);
   }
@@ -360,7 +346,6 @@ class _$FilterHabitsByDateImpl implements _FilterHabitsByDate {
     TResult Function(String id)? deleteHabit,
     TResult Function(String id)? getHabitById,
     TResult Function(String habitId, DateTime date)? completeHabit,
-    TResult Function(String habitId)? getHabitState,
     required TResult orElse(),
   }) {
     if (filterHabitsByDate != null) {
@@ -379,7 +364,6 @@ class _$FilterHabitsByDateImpl implements _FilterHabitsByDate {
     required TResult Function(_DeleteHabit value) deleteHabit,
     required TResult Function(_GetHabitById value) getHabitById,
     required TResult Function(_CompleteHabit value) completeHabit,
-    required TResult Function(_GetHabitState value) getHabitState,
   }) {
     return filterHabitsByDate(this);
   }
@@ -394,7 +378,6 @@ class _$FilterHabitsByDateImpl implements _FilterHabitsByDate {
     TResult? Function(_DeleteHabit value)? deleteHabit,
     TResult? Function(_GetHabitById value)? getHabitById,
     TResult? Function(_CompleteHabit value)? completeHabit,
-    TResult? Function(_GetHabitState value)? getHabitState,
   }) {
     return filterHabitsByDate?.call(this);
   }
@@ -409,7 +392,6 @@ class _$FilterHabitsByDateImpl implements _FilterHabitsByDate {
     TResult Function(_DeleteHabit value)? deleteHabit,
     TResult Function(_GetHabitById value)? getHabitById,
     TResult Function(_CompleteHabit value)? completeHabit,
-    TResult Function(_GetHabitState value)? getHabitState,
     required TResult orElse(),
   }) {
     if (filterHabitsByDate != null) {
@@ -519,7 +501,6 @@ class _$AddHabitImpl implements _AddHabit {
     required TResult Function(String id) deleteHabit,
     required TResult Function(String id) getHabitById,
     required TResult Function(String habitId, DateTime date) completeHabit,
-    required TResult Function(String habitId) getHabitState,
   }) {
     return addHabit(habit);
   }
@@ -534,7 +515,6 @@ class _$AddHabitImpl implements _AddHabit {
     TResult? Function(String id)? deleteHabit,
     TResult? Function(String id)? getHabitById,
     TResult? Function(String habitId, DateTime date)? completeHabit,
-    TResult? Function(String habitId)? getHabitState,
   }) {
     return addHabit?.call(habit);
   }
@@ -549,7 +529,6 @@ class _$AddHabitImpl implements _AddHabit {
     TResult Function(String id)? deleteHabit,
     TResult Function(String id)? getHabitById,
     TResult Function(String habitId, DateTime date)? completeHabit,
-    TResult Function(String habitId)? getHabitState,
     required TResult orElse(),
   }) {
     if (addHabit != null) {
@@ -568,7 +547,6 @@ class _$AddHabitImpl implements _AddHabit {
     required TResult Function(_DeleteHabit value) deleteHabit,
     required TResult Function(_GetHabitById value) getHabitById,
     required TResult Function(_CompleteHabit value) completeHabit,
-    required TResult Function(_GetHabitState value) getHabitState,
   }) {
     return addHabit(this);
   }
@@ -583,7 +561,6 @@ class _$AddHabitImpl implements _AddHabit {
     TResult? Function(_DeleteHabit value)? deleteHabit,
     TResult? Function(_GetHabitById value)? getHabitById,
     TResult? Function(_CompleteHabit value)? completeHabit,
-    TResult? Function(_GetHabitState value)? getHabitState,
   }) {
     return addHabit?.call(this);
   }
@@ -598,7 +575,6 @@ class _$AddHabitImpl implements _AddHabit {
     TResult Function(_DeleteHabit value)? deleteHabit,
     TResult Function(_GetHabitById value)? getHabitById,
     TResult Function(_CompleteHabit value)? completeHabit,
-    TResult Function(_GetHabitState value)? getHabitState,
     required TResult orElse(),
   }) {
     if (addHabit != null) {
@@ -707,7 +683,6 @@ class _$UpdateHabitImpl implements _UpdateHabit {
     required TResult Function(String id) deleteHabit,
     required TResult Function(String id) getHabitById,
     required TResult Function(String habitId, DateTime date) completeHabit,
-    required TResult Function(String habitId) getHabitState,
   }) {
     return updateHabit(habit);
   }
@@ -722,7 +697,6 @@ class _$UpdateHabitImpl implements _UpdateHabit {
     TResult? Function(String id)? deleteHabit,
     TResult? Function(String id)? getHabitById,
     TResult? Function(String habitId, DateTime date)? completeHabit,
-    TResult? Function(String habitId)? getHabitState,
   }) {
     return updateHabit?.call(habit);
   }
@@ -737,7 +711,6 @@ class _$UpdateHabitImpl implements _UpdateHabit {
     TResult Function(String id)? deleteHabit,
     TResult Function(String id)? getHabitById,
     TResult Function(String habitId, DateTime date)? completeHabit,
-    TResult Function(String habitId)? getHabitState,
     required TResult orElse(),
   }) {
     if (updateHabit != null) {
@@ -756,7 +729,6 @@ class _$UpdateHabitImpl implements _UpdateHabit {
     required TResult Function(_DeleteHabit value) deleteHabit,
     required TResult Function(_GetHabitById value) getHabitById,
     required TResult Function(_CompleteHabit value) completeHabit,
-    required TResult Function(_GetHabitState value) getHabitState,
   }) {
     return updateHabit(this);
   }
@@ -771,7 +743,6 @@ class _$UpdateHabitImpl implements _UpdateHabit {
     TResult? Function(_DeleteHabit value)? deleteHabit,
     TResult? Function(_GetHabitById value)? getHabitById,
     TResult? Function(_CompleteHabit value)? completeHabit,
-    TResult? Function(_GetHabitState value)? getHabitState,
   }) {
     return updateHabit?.call(this);
   }
@@ -786,7 +757,6 @@ class _$UpdateHabitImpl implements _UpdateHabit {
     TResult Function(_DeleteHabit value)? deleteHabit,
     TResult Function(_GetHabitById value)? getHabitById,
     TResult Function(_CompleteHabit value)? completeHabit,
-    TResult Function(_GetHabitState value)? getHabitState,
     required TResult orElse(),
   }) {
     if (updateHabit != null) {
@@ -883,7 +853,6 @@ class _$DeleteHabitImpl implements _DeleteHabit {
     required TResult Function(String id) deleteHabit,
     required TResult Function(String id) getHabitById,
     required TResult Function(String habitId, DateTime date) completeHabit,
-    required TResult Function(String habitId) getHabitState,
   }) {
     return deleteHabit(id);
   }
@@ -898,7 +867,6 @@ class _$DeleteHabitImpl implements _DeleteHabit {
     TResult? Function(String id)? deleteHabit,
     TResult? Function(String id)? getHabitById,
     TResult? Function(String habitId, DateTime date)? completeHabit,
-    TResult? Function(String habitId)? getHabitState,
   }) {
     return deleteHabit?.call(id);
   }
@@ -913,7 +881,6 @@ class _$DeleteHabitImpl implements _DeleteHabit {
     TResult Function(String id)? deleteHabit,
     TResult Function(String id)? getHabitById,
     TResult Function(String habitId, DateTime date)? completeHabit,
-    TResult Function(String habitId)? getHabitState,
     required TResult orElse(),
   }) {
     if (deleteHabit != null) {
@@ -932,7 +899,6 @@ class _$DeleteHabitImpl implements _DeleteHabit {
     required TResult Function(_DeleteHabit value) deleteHabit,
     required TResult Function(_GetHabitById value) getHabitById,
     required TResult Function(_CompleteHabit value) completeHabit,
-    required TResult Function(_GetHabitState value) getHabitState,
   }) {
     return deleteHabit(this);
   }
@@ -947,7 +913,6 @@ class _$DeleteHabitImpl implements _DeleteHabit {
     TResult? Function(_DeleteHabit value)? deleteHabit,
     TResult? Function(_GetHabitById value)? getHabitById,
     TResult? Function(_CompleteHabit value)? completeHabit,
-    TResult? Function(_GetHabitState value)? getHabitState,
   }) {
     return deleteHabit?.call(this);
   }
@@ -962,7 +927,6 @@ class _$DeleteHabitImpl implements _DeleteHabit {
     TResult Function(_DeleteHabit value)? deleteHabit,
     TResult Function(_GetHabitById value)? getHabitById,
     TResult Function(_CompleteHabit value)? completeHabit,
-    TResult Function(_GetHabitState value)? getHabitState,
     required TResult orElse(),
   }) {
     if (deleteHabit != null) {
@@ -1059,7 +1023,6 @@ class _$GetHabitByIdImpl implements _GetHabitById {
     required TResult Function(String id) deleteHabit,
     required TResult Function(String id) getHabitById,
     required TResult Function(String habitId, DateTime date) completeHabit,
-    required TResult Function(String habitId) getHabitState,
   }) {
     return getHabitById(id);
   }
@@ -1074,7 +1037,6 @@ class _$GetHabitByIdImpl implements _GetHabitById {
     TResult? Function(String id)? deleteHabit,
     TResult? Function(String id)? getHabitById,
     TResult? Function(String habitId, DateTime date)? completeHabit,
-    TResult? Function(String habitId)? getHabitState,
   }) {
     return getHabitById?.call(id);
   }
@@ -1089,7 +1051,6 @@ class _$GetHabitByIdImpl implements _GetHabitById {
     TResult Function(String id)? deleteHabit,
     TResult Function(String id)? getHabitById,
     TResult Function(String habitId, DateTime date)? completeHabit,
-    TResult Function(String habitId)? getHabitState,
     required TResult orElse(),
   }) {
     if (getHabitById != null) {
@@ -1108,7 +1069,6 @@ class _$GetHabitByIdImpl implements _GetHabitById {
     required TResult Function(_DeleteHabit value) deleteHabit,
     required TResult Function(_GetHabitById value) getHabitById,
     required TResult Function(_CompleteHabit value) completeHabit,
-    required TResult Function(_GetHabitState value) getHabitState,
   }) {
     return getHabitById(this);
   }
@@ -1123,7 +1083,6 @@ class _$GetHabitByIdImpl implements _GetHabitById {
     TResult? Function(_DeleteHabit value)? deleteHabit,
     TResult? Function(_GetHabitById value)? getHabitById,
     TResult? Function(_CompleteHabit value)? completeHabit,
-    TResult? Function(_GetHabitState value)? getHabitState,
   }) {
     return getHabitById?.call(this);
   }
@@ -1138,7 +1097,6 @@ class _$GetHabitByIdImpl implements _GetHabitById {
     TResult Function(_DeleteHabit value)? deleteHabit,
     TResult Function(_GetHabitById value)? getHabitById,
     TResult Function(_CompleteHabit value)? completeHabit,
-    TResult Function(_GetHabitState value)? getHabitState,
     required TResult orElse(),
   }) {
     if (getHabitById != null) {
@@ -1243,7 +1201,6 @@ class _$CompleteHabitImpl implements _CompleteHabit {
     required TResult Function(String id) deleteHabit,
     required TResult Function(String id) getHabitById,
     required TResult Function(String habitId, DateTime date) completeHabit,
-    required TResult Function(String habitId) getHabitState,
   }) {
     return completeHabit(habitId, date);
   }
@@ -1258,7 +1215,6 @@ class _$CompleteHabitImpl implements _CompleteHabit {
     TResult? Function(String id)? deleteHabit,
     TResult? Function(String id)? getHabitById,
     TResult? Function(String habitId, DateTime date)? completeHabit,
-    TResult? Function(String habitId)? getHabitState,
   }) {
     return completeHabit?.call(habitId, date);
   }
@@ -1273,7 +1229,6 @@ class _$CompleteHabitImpl implements _CompleteHabit {
     TResult Function(String id)? deleteHabit,
     TResult Function(String id)? getHabitById,
     TResult Function(String habitId, DateTime date)? completeHabit,
-    TResult Function(String habitId)? getHabitState,
     required TResult orElse(),
   }) {
     if (completeHabit != null) {
@@ -1292,7 +1247,6 @@ class _$CompleteHabitImpl implements _CompleteHabit {
     required TResult Function(_DeleteHabit value) deleteHabit,
     required TResult Function(_GetHabitById value) getHabitById,
     required TResult Function(_CompleteHabit value) completeHabit,
-    required TResult Function(_GetHabitState value) getHabitState,
   }) {
     return completeHabit(this);
   }
@@ -1307,7 +1261,6 @@ class _$CompleteHabitImpl implements _CompleteHabit {
     TResult? Function(_DeleteHabit value)? deleteHabit,
     TResult? Function(_GetHabitById value)? getHabitById,
     TResult? Function(_CompleteHabit value)? completeHabit,
-    TResult? Function(_GetHabitState value)? getHabitState,
   }) {
     return completeHabit?.call(this);
   }
@@ -1322,7 +1275,6 @@ class _$CompleteHabitImpl implements _CompleteHabit {
     TResult Function(_DeleteHabit value)? deleteHabit,
     TResult Function(_GetHabitById value)? getHabitById,
     TResult Function(_CompleteHabit value)? completeHabit,
-    TResult Function(_GetHabitState value)? getHabitState,
     required TResult orElse(),
   }) {
     if (completeHabit != null) {
@@ -1347,182 +1299,6 @@ abstract class _CompleteHabit implements HabitEvent {
 }
 
 /// @nodoc
-abstract class _$$GetHabitStateImplCopyWith<$Res> {
-  factory _$$GetHabitStateImplCopyWith(
-          _$GetHabitStateImpl value, $Res Function(_$GetHabitStateImpl) then) =
-      __$$GetHabitStateImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String habitId});
-}
-
-/// @nodoc
-class __$$GetHabitStateImplCopyWithImpl<$Res>
-    extends _$HabitEventCopyWithImpl<$Res, _$GetHabitStateImpl>
-    implements _$$GetHabitStateImplCopyWith<$Res> {
-  __$$GetHabitStateImplCopyWithImpl(
-      _$GetHabitStateImpl _value, $Res Function(_$GetHabitStateImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of HabitEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? habitId = null,
-  }) {
-    return _then(_$GetHabitStateImpl(
-      null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$GetHabitStateImpl implements _GetHabitState {
-  const _$GetHabitStateImpl(this.habitId);
-
-  @override
-  final String habitId;
-
-  @override
-  String toString() {
-    return 'HabitEvent.getHabitState(habitId: $habitId)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetHabitStateImpl &&
-            (identical(other.habitId, habitId) || other.habitId == habitId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, habitId);
-
-  /// Create a copy of HabitEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetHabitStateImplCopyWith<_$GetHabitStateImpl> get copyWith =>
-      __$$GetHabitStateImplCopyWithImpl<_$GetHabitStateImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loadHabits,
-    required TResult Function(DateTime date) filterHabitsByDate,
-    required TResult Function(HabitEntity habit) addHabit,
-    required TResult Function(HabitEntity habit) updateHabit,
-    required TResult Function(String id) deleteHabit,
-    required TResult Function(String id) getHabitById,
-    required TResult Function(String habitId, DateTime date) completeHabit,
-    required TResult Function(String habitId) getHabitState,
-  }) {
-    return getHabitState(habitId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadHabits,
-    TResult? Function(DateTime date)? filterHabitsByDate,
-    TResult? Function(HabitEntity habit)? addHabit,
-    TResult? Function(HabitEntity habit)? updateHabit,
-    TResult? Function(String id)? deleteHabit,
-    TResult? Function(String id)? getHabitById,
-    TResult? Function(String habitId, DateTime date)? completeHabit,
-    TResult? Function(String habitId)? getHabitState,
-  }) {
-    return getHabitState?.call(habitId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadHabits,
-    TResult Function(DateTime date)? filterHabitsByDate,
-    TResult Function(HabitEntity habit)? addHabit,
-    TResult Function(HabitEntity habit)? updateHabit,
-    TResult Function(String id)? deleteHabit,
-    TResult Function(String id)? getHabitById,
-    TResult Function(String habitId, DateTime date)? completeHabit,
-    TResult Function(String habitId)? getHabitState,
-    required TResult orElse(),
-  }) {
-    if (getHabitState != null) {
-      return getHabitState(habitId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadHabits value) loadHabits,
-    required TResult Function(_FilterHabitsByDate value) filterHabitsByDate,
-    required TResult Function(_AddHabit value) addHabit,
-    required TResult Function(_UpdateHabit value) updateHabit,
-    required TResult Function(_DeleteHabit value) deleteHabit,
-    required TResult Function(_GetHabitById value) getHabitById,
-    required TResult Function(_CompleteHabit value) completeHabit,
-    required TResult Function(_GetHabitState value) getHabitState,
-  }) {
-    return getHabitState(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadHabits value)? loadHabits,
-    TResult? Function(_FilterHabitsByDate value)? filterHabitsByDate,
-    TResult? Function(_AddHabit value)? addHabit,
-    TResult? Function(_UpdateHabit value)? updateHabit,
-    TResult? Function(_DeleteHabit value)? deleteHabit,
-    TResult? Function(_GetHabitById value)? getHabitById,
-    TResult? Function(_CompleteHabit value)? completeHabit,
-    TResult? Function(_GetHabitState value)? getHabitState,
-  }) {
-    return getHabitState?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadHabits value)? loadHabits,
-    TResult Function(_FilterHabitsByDate value)? filterHabitsByDate,
-    TResult Function(_AddHabit value)? addHabit,
-    TResult Function(_UpdateHabit value)? updateHabit,
-    TResult Function(_DeleteHabit value)? deleteHabit,
-    TResult Function(_GetHabitById value)? getHabitById,
-    TResult Function(_CompleteHabit value)? completeHabit,
-    TResult Function(_GetHabitState value)? getHabitState,
-    required TResult orElse(),
-  }) {
-    if (getHabitState != null) {
-      return getHabitState(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetHabitState implements HabitEvent {
-  const factory _GetHabitState(final String habitId) = _$GetHabitStateImpl;
-
-  String get habitId;
-
-  /// Create a copy of HabitEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetHabitStateImplCopyWith<_$GetHabitStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$HabitState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -1531,7 +1307,6 @@ mixin _$HabitState {
     required TResult Function(List<HabitEntity> allHabits,
             List<HabitEntity> habitsOfDay, DateTime selectedDate)
         loaded,
-    required TResult Function(HabitStatsEntity stats) statsLoaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -1542,7 +1317,6 @@ mixin _$HabitState {
     TResult? Function(List<HabitEntity> allHabits,
             List<HabitEntity> habitsOfDay, DateTime selectedDate)?
         loaded,
-    TResult? Function(HabitStatsEntity stats)? statsLoaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -1553,7 +1327,6 @@ mixin _$HabitState {
     TResult Function(List<HabitEntity> allHabits, List<HabitEntity> habitsOfDay,
             DateTime selectedDate)?
         loaded,
-    TResult Function(HabitStatsEntity stats)? statsLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -1563,7 +1336,6 @@ mixin _$HabitState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_StatsLoaded value) statsLoaded,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -1572,7 +1344,6 @@ mixin _$HabitState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_StatsLoaded value)? statsLoaded,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -1581,7 +1352,6 @@ mixin _$HabitState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_StatsLoaded value)? statsLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -1655,7 +1425,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function(List<HabitEntity> allHabits,
             List<HabitEntity> habitsOfDay, DateTime selectedDate)
         loaded,
-    required TResult Function(HabitStatsEntity stats) statsLoaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -1669,7 +1438,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function(List<HabitEntity> allHabits,
             List<HabitEntity> habitsOfDay, DateTime selectedDate)?
         loaded,
-    TResult? Function(HabitStatsEntity stats)? statsLoaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -1683,7 +1451,6 @@ class _$InitialImpl implements _Initial {
     TResult Function(List<HabitEntity> allHabits, List<HabitEntity> habitsOfDay,
             DateTime selectedDate)?
         loaded,
-    TResult Function(HabitStatsEntity stats)? statsLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1699,7 +1466,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_StatsLoaded value) statsLoaded,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -1711,7 +1477,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_StatsLoaded value)? statsLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -1723,7 +1488,6 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_StatsLoaded value)? statsLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1784,7 +1548,6 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(List<HabitEntity> allHabits,
             List<HabitEntity> habitsOfDay, DateTime selectedDate)
         loaded,
-    required TResult Function(HabitStatsEntity stats) statsLoaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -1798,7 +1561,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(List<HabitEntity> allHabits,
             List<HabitEntity> habitsOfDay, DateTime selectedDate)?
         loaded,
-    TResult? Function(HabitStatsEntity stats)? statsLoaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -1812,7 +1574,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function(List<HabitEntity> allHabits, List<HabitEntity> habitsOfDay,
             DateTime selectedDate)?
         loaded,
-    TResult Function(HabitStatsEntity stats)? statsLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1828,7 +1589,6 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_StatsLoaded value) statsLoaded,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -1840,7 +1600,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_StatsLoaded value)? statsLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -1852,7 +1611,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_StatsLoaded value)? statsLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1983,7 +1741,6 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(List<HabitEntity> allHabits,
             List<HabitEntity> habitsOfDay, DateTime selectedDate)
         loaded,
-    required TResult Function(HabitStatsEntity stats) statsLoaded,
     required TResult Function(String message) error,
   }) {
     return loaded(allHabits, habitsOfDay, selectedDate);
@@ -1997,7 +1754,6 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(List<HabitEntity> allHabits,
             List<HabitEntity> habitsOfDay, DateTime selectedDate)?
         loaded,
-    TResult? Function(HabitStatsEntity stats)? statsLoaded,
     TResult? Function(String message)? error,
   }) {
     return loaded?.call(allHabits, habitsOfDay, selectedDate);
@@ -2011,7 +1767,6 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(List<HabitEntity> allHabits, List<HabitEntity> habitsOfDay,
             DateTime selectedDate)?
         loaded,
-    TResult Function(HabitStatsEntity stats)? statsLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -2027,7 +1782,6 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_StatsLoaded value) statsLoaded,
     required TResult Function(_Error value) error,
   }) {
     return loaded(this);
@@ -2039,7 +1793,6 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_StatsLoaded value)? statsLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return loaded?.call(this);
@@ -2051,7 +1804,6 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_StatsLoaded value)? statsLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -2076,182 +1828,6 @@ abstract class _Loaded implements HabitState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$StatsLoadedImplCopyWith<$Res> {
-  factory _$$StatsLoadedImplCopyWith(
-          _$StatsLoadedImpl value, $Res Function(_$StatsLoadedImpl) then) =
-      __$$StatsLoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({HabitStatsEntity stats});
-
-  $HabitStatsEntityCopyWith<$Res> get stats;
-}
-
-/// @nodoc
-class __$$StatsLoadedImplCopyWithImpl<$Res>
-    extends _$HabitStateCopyWithImpl<$Res, _$StatsLoadedImpl>
-    implements _$$StatsLoadedImplCopyWith<$Res> {
-  __$$StatsLoadedImplCopyWithImpl(
-      _$StatsLoadedImpl _value, $Res Function(_$StatsLoadedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of HabitState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? stats = null,
-  }) {
-    return _then(_$StatsLoadedImpl(
-      null == stats
-          ? _value.stats
-          : stats // ignore: cast_nullable_to_non_nullable
-              as HabitStatsEntity,
-    ));
-  }
-
-  /// Create a copy of HabitState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $HabitStatsEntityCopyWith<$Res> get stats {
-    return $HabitStatsEntityCopyWith<$Res>(_value.stats, (value) {
-      return _then(_value.copyWith(stats: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$StatsLoadedImpl implements _StatsLoaded {
-  const _$StatsLoadedImpl(this.stats);
-
-  @override
-  final HabitStatsEntity stats;
-
-  @override
-  String toString() {
-    return 'HabitState.statsLoaded(stats: $stats)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$StatsLoadedImpl &&
-            (identical(other.stats, stats) || other.stats == stats));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, stats);
-
-  /// Create a copy of HabitState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StatsLoadedImplCopyWith<_$StatsLoadedImpl> get copyWith =>
-      __$$StatsLoadedImplCopyWithImpl<_$StatsLoadedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<HabitEntity> allHabits,
-            List<HabitEntity> habitsOfDay, DateTime selectedDate)
-        loaded,
-    required TResult Function(HabitStatsEntity stats) statsLoaded,
-    required TResult Function(String message) error,
-  }) {
-    return statsLoaded(stats);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<HabitEntity> allHabits,
-            List<HabitEntity> habitsOfDay, DateTime selectedDate)?
-        loaded,
-    TResult? Function(HabitStatsEntity stats)? statsLoaded,
-    TResult? Function(String message)? error,
-  }) {
-    return statsLoaded?.call(stats);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<HabitEntity> allHabits, List<HabitEntity> habitsOfDay,
-            DateTime selectedDate)?
-        loaded,
-    TResult Function(HabitStatsEntity stats)? statsLoaded,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (statsLoaded != null) {
-      return statsLoaded(stats);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_StatsLoaded value) statsLoaded,
-    required TResult Function(_Error value) error,
-  }) {
-    return statsLoaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_StatsLoaded value)? statsLoaded,
-    TResult? Function(_Error value)? error,
-  }) {
-    return statsLoaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_StatsLoaded value)? statsLoaded,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (statsLoaded != null) {
-      return statsLoaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _StatsLoaded implements HabitState {
-  const factory _StatsLoaded(final HabitStatsEntity stats) = _$StatsLoadedImpl;
-
-  HabitStatsEntity get stats;
-
-  /// Create a copy of HabitState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StatsLoadedImplCopyWith<_$StatsLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2328,7 +1904,6 @@ class _$ErrorImpl implements _Error {
     required TResult Function(List<HabitEntity> allHabits,
             List<HabitEntity> habitsOfDay, DateTime selectedDate)
         loaded,
-    required TResult Function(HabitStatsEntity stats) statsLoaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -2342,7 +1917,6 @@ class _$ErrorImpl implements _Error {
     TResult? Function(List<HabitEntity> allHabits,
             List<HabitEntity> habitsOfDay, DateTime selectedDate)?
         loaded,
-    TResult? Function(HabitStatsEntity stats)? statsLoaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -2356,7 +1930,6 @@ class _$ErrorImpl implements _Error {
     TResult Function(List<HabitEntity> allHabits, List<HabitEntity> habitsOfDay,
             DateTime selectedDate)?
         loaded,
-    TResult Function(HabitStatsEntity stats)? statsLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -2372,7 +1945,6 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_StatsLoaded value) statsLoaded,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -2384,7 +1956,6 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_StatsLoaded value)? statsLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -2396,7 +1967,6 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_StatsLoaded value)? statsLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
