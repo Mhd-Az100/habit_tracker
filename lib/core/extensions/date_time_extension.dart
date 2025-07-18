@@ -10,4 +10,9 @@ extension DateTimeX on DateTime {
   String toNormalizedTimeString() {
     return '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
   }
+  /// Converts the [DateTime] object to a normalized DateTime object without time information.
+  DateTime toNormalizedDateTime() {
+    return DateTime(year, month, day);
+  }
+
 }

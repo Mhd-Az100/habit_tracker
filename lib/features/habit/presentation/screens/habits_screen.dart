@@ -1,9 +1,10 @@
-import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/core/helpers/custom_show_bottom_sheet.dart';
 import 'package:habit_tracker/features/habit/presentation/controller/bloc/habit_bloc.dart';
+import 'package:habit_tracker/features/habit/presentation/controller/datepicker_cubit/datepicker_cubit.dart';
 import 'package:habit_tracker/features/habit/presentation/widgets/add_habit_sheet.dart';
+import 'package:habit_tracker/features/habit/presentation/widgets/custom_date_picker.dart';
 import 'package:habit_tracker/features/habit/presentation/widgets/habits_list.dart';
 
 class HabitsScreen extends StatelessWidget {
@@ -16,13 +17,15 @@ class HabitsScreen extends StatelessWidget {
         slivers: [
           SliverAppBar(
             expandedHeight: 140.0,
-            flexibleSpace: FlexibleSpaceBar(
-              background: CustomDatePicker(),
-            ),
+            flexibleSpace: FlexibleSpaceBar(background: CustomDatePicker()),
             pinned: true,
             floating: true,
           ),
-          const HabitListView(),
+          BlocBuilder<DatePickerCubit, DatePickerState>(
+            builder: (context, state) {
+              return HabitListView(selectedDate: state.selectedDate,);
+            },
+          ),
         ],
       ),
       floatingActionButton: Builder(
@@ -44,32 +47,3 @@ class HabitsScreen extends StatelessWidget {
     );
   }
 }
-
-class CustomDatePicker extends StatelessWidget {
-  const CustomDatePicker({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: EasyDateTimeLine(
-          initialDate: DateTime.now(),
-          onDateChange: (selectedDate) {},
-          headerProps: const EasyHeaderProps(
-            showHeader: false,
-          ),
-          dayProps: EasyDayProps(
-            activeDayStyle: DayStyle(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-          ),
-        ),
-    );
-  }
-}
-
